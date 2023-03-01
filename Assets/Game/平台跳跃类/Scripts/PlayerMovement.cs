@@ -61,8 +61,7 @@ public class PlayerMovement : MonoBehaviour
         //ÌøÔ¾
         if (_isJump)
         {
-            _rigidbody.AddForce(Vector2.up * 5000, ForceMode2D.Impulse);
-            //_rigidbody.velocity = Vector2.up * 10000 ;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 150);
             _animator.SetBool(Animator_IsJump, true);
             _isJump = false;
         }
@@ -91,15 +90,15 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void CheckGround()
     {
-        var collison = Physics2D.Raycast(this.transform.position,Vector3.down, 0.4f, LayerMask.GetMask("Ground"));
+        var collison = Physics2D.Raycast(this.transform.position, Vector3.down, 0.4f, LayerMask.GetMask("Ground"));
         if (collison.collider != null)
-        { 
+        {
             _isGround = true;
             _animator.SetBool(Animator_IsJump, false);
         }
         else
         {
-            _isGround = false;          
+            _isGround = false;
         }
     }
 
