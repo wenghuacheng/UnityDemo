@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SceneGameSceneUI : MonoBehaviour
+{
+    [SerializeField] private Button button;
+
+
+    void Start()
+    {
+        button.onClick.AddListener(() =>
+        {
+            SceneLoader.Load(SceneLoader.Scene.MainScene);
+        });
+    }
+}
