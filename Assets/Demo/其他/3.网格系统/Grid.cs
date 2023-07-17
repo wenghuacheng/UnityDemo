@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Grid<T>
 {
-
     //起始点【网格不可能一致是(0，0)点起始，会有偏移】
     private Vector3 originPosition;
     //网格数组
