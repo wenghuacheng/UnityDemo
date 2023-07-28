@@ -6,9 +6,10 @@ public class ObjectMoveTranslate : MonoBehaviour
 {
     private float speed = 1;
 
-    //不要在Update中运行，容易导致低帧率上长度不一致
-    void FixedUpdate()
+
+    private void Update()
     {
-        this.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        //会向着自身的上方向运行，已经进行了旋转不需要再次旋转了
+        this.transform.Translate(Vector3.up * speed);
     }
 }
