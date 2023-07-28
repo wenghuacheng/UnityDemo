@@ -13,6 +13,13 @@ public class CameraCameraAfterTarget : MonoBehaviour
 
     void Update()
     {
+       
+    }
+
+    private void LateUpdate()
+    {
+        //在LateUpdate中移动可以解决抖动问题
+
         // CameraSmoothDampMove01();
         CameraSmoothDampMove02();
     }
