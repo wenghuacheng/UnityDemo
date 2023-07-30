@@ -16,6 +16,7 @@ public class MeshMaskUI : MaskableGraphic
 
     protected override void Awake()
     {
+        //获取文字的宽高
         width = this.rectTransform.rect.width;
         height = this.rectTransform.rect.height;
         anchoredPosition = this.rectTransform.anchoredPosition;
@@ -25,9 +26,10 @@ public class MeshMaskUI : MaskableGraphic
     {
         vh.Clear();
 
-        //左上角点【这里是居中所以需要/2】
+        //左上角点【这里文本居中所以需要/2】
         var leftTopPostion = new Vector2(anchoredPosition.x - width / 2, anchoredPosition.y / 2);
 
+        //获取最大的X的位置
         float maxX = Math.Min(leftTopPostion.x + time * 100, leftTopPostion.x + width);
 
         //注意遮罩区域点的绘制顺序【逆时针/顺时针，否则会出现不规则图形】
@@ -37,6 +39,7 @@ public class MeshMaskUI : MaskableGraphic
         Vector3 vec3 = new Vector3(maxX, anchoredPosition.y + height / 2);//遮罩右下角点
         Vector3 vec4 = new Vector3(maxX, anchoredPosition.y - height / 2);//遮罩右上角点
 
+        //绘制区域。这样需要有alpha值
         vh.AddUIVertexQuad(new UIVertex[] {
             new UIVertex{ position=vec1,color=new Color32(0,0,0,1) },
             new UIVertex{ position=vec2,color=new Color32(0,0,0,1) },
