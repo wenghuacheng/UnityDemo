@@ -6,7 +6,10 @@ using UnityEngine.Pool;
 public class PoolManager : MonoBehaviour
 {
     //用于生成的预制体
-    [SerializeField] private TestPoolObject prefab;
+    /**
+     特别注意这里需要使用gameobject类型，直接使用脚本类型容易在Instantiate时出现类型转换错误
+     */
+    [SerializeField] private GameObject prefab;
 
     private ObjectPool<TestPoolObject> _pool;
 
@@ -22,9 +25,10 @@ public class PoolManager : MonoBehaviour
     /// </summary>
     private TestPoolObject ObjectCreate()
     {
-        TestPoolObject obj = Instantiate(prefab);
-        obj.SetPool(_pool);
-        return obj;
+        var obj = Instantiate(prefab);
+        var t = obj.GetComponent<TestPoolObject>();
+        t.SetPool(_pool);
+        return t;
     }
 
     /// <summary>
@@ -61,7 +65,11 @@ public class PoolManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
-            _pool.Get();
+        {
+            var obj = _pool.Get();
+            obj.transform.position = new Vector3(0, 2, 0);
+        }
+
     }
     #endregion
 }
