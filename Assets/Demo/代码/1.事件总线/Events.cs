@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#region 事件接收者
+#region 事件接收
 /// <summary>
 /// 事件对象
 /// </summary>
@@ -29,7 +29,7 @@ public class EventBus
 {
     //使用弱引用，防止总线中的引用导致内存泄露
     private Dictionary<Type, List<WeakReference<IBaseEventReceiver>>> _receiver;
-
+    //事件对象哈希表，用于快速查找接收者对象
     private Dictionary<int, WeakReference<IBaseEventReceiver>> _receiverHashToReference;
 
     public EventBus()

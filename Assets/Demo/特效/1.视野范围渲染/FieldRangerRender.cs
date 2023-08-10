@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,56 +9,84 @@ using static UnityEngine.UI.Image;
 public class FieldRangerRender : MonoBehaviour
 {
     private MeshFilter meshFilter;
+    private Camera _camera;
+
+    //视角角度
+    float fov = 90f;
 
     private void Awake()
     {
         meshFilter = GetComponent<MeshFilter>();
+        _camera = Camera.main;
     }
 
     void Start()
     {
-        //DrawTriangle();
-        DrawRange();
+        //DrawRange();
     }
 
     // Update is called once per frame
     void Update()
     {
+        var dir = GetDirection();
+        var angle = GetAngle(dir);
 
+        angle += 90;
+
+        DrawRange(angle - fov / 2);
     }
 
 
-    private void DrawRange()
+    private void DrawRange(float startAngle)
     {
         Mesh mesh = new Mesh();
         meshFilter.mesh = mesh;
 
-        //视角
-        float fov = 90f;
-        //射线数量【至少需要2条射线形成一个三角形】
-        int rayCount = 2;
+        var originPosition = Vector3.zero;
 
-        float angle = 0;
-        float intervalAngle = fov / (rayCount - 1);//每个扇区的角度
-        float viewDistance = 50f;
+        //扇区数量
+        int areaCount = 60;
+        //每个扇区的角度
+        float angleIncrease = fov / areaCount;
+        //射线长度
+        float distance = 2f;
 
         //顶点数组=扇区数量+原点+1
-        Vector3[] vertices = new Vector3[rayCount + 1];
+        Vector3[] vertices = new Vector3[areaCount + 1 + 1];
         //三角形顶点索引数组
-        int[] triangles = new int[(rayCount - 1) * 3];
+        int[] triangles = new int[areaCount * 3];
         //uv数组
         Vector2[] uv = new Vector2[vertices.Count()];
 
-        #region 顶点
-        //从第二个位置开始，因为第一个坐标为(0,0)点
-        angle += intervalAngle;
-        for (int i = 1; i <= rayCount; i++)
+        #region 设置顶点
+        vertices[0] = originPosition;//第一个点为起始点【原点】
+        for (int i = 1; i < vertices.Length; i++)
         {
-            vertices[i] = new Vector3(1f * i, 1f * i, 0);
+            //注意需要是负角度才是顺时针，否则是逆时针
+            //而渲染mesh时需要为顺时针，否则不会渲染
+            var angle = startAngle + angleIncrease * (i - 1) * -1;
+
+            //获取旋转后的点坐标
+            var target = GetRotationPosition(angle);
+            var raycastHit = Physics2D.Raycast(originPosition, target, distance);
+
+            if (raycastHit.collider == null)
+            {
+                //没有检测到物体
+                vertices[i] = originPosition + target * distance;
+            }
+            else
+            {
+                //检测到物体使用碰撞点
+                vertices[i] = raycastHit.point;
+            }
+
+
         }
         #endregion
 
-        #region 三角形
+        #region 设置三角形
+        //顶点索引
         int verticesIndex = 1;
         for (int i = 0; i < triangles.Length; i += 3)
         {
@@ -66,90 +95,56 @@ public class FieldRangerRender : MonoBehaviour
             triangles[i + 2] = verticesIndex + 1;
             verticesIndex++;
         }
-
         #endregion
-        Debug.Log(vertices.Length);
-        for (int i = 0; i < vertices.Count(); i++)
-        {
-            Debug.Log("V" + vertices[i]);
-        }
 
+        #region 测试
+        //for (int i = 0; i < vertices.Length; i++)
+        //{
+        //    Debug.Log("顶点:" + vertices[i]);
+        //}
 
-        Debug.Log(triangles.Length);
-        for (int i = 0; i < triangles.Length; i++)
-        {
-            Debug.Log("T" + triangles[i]);
-        }
+        //for (int i = 0; i < triangles.Length; i++)
+        //{
+        //    Debug.Log("三角形索引:" + triangles[i]);
+        //}
+        #endregion
 
         //设置mesh值
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.uv = uv;
-
-
-
     }
 
     /// <summary>
-    /// 最简单的mesh
+    /// 获取旋转后的角度坐标
     /// </summary>
-    private void DrawTriangle()
+    /// <param name="angle"></param>
+    private Vector3 GetRotationPosition(float angle)
     {
-        Mesh mesh = new Mesh();
-        meshFilter.mesh = mesh;
-
-        //顶点数组
-        Vector3[] vertices = new Vector3[3];
-        //三角形顶点索引数组
-        int[] triangles = new int[3];
-        //uv数组
-        Vector2[] uv = new Vector2[3];
-
-        #region 设置顶点
-        vertices[0] = Vector3.zero;
-        vertices[1] = new Vector3(1, 0);
-        vertices[2] = new Vector3(0, 1);
-        #endregion
-
-        #region 设置三角形索引
-        triangles[0] = 0;
-        triangles[1] = 1;
-        triangles[2] = 2;
-        #endregion
-
-        //设置mesh值
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        mesh.uv = uv;
-
-
-
+        var rad = angle * Mathf.Deg2Rad;
+        return new Vector3(Mathf.Cos(rad), Mathf.Sin(rad));
     }
 
-
-
-    private void OnDrawGizmos()
+    /// <summary>
+    /// 获取当前向量与零点的角度
+    /// </summary>
+    /// <returns></returns>
+    private float GetAngle(Vector3 dir)
     {
-        ////区域数量
-        //int areaCount = 10;
-        ////视角范围
-        //float angle = 90f;
-        ////增加角度
-        //float angleIncrease = 90 / areaCount;
-
-        //float currentAngle = 0;
-        //for (int i = 0; i < areaCount; i++)
-        //{
-        //    Vector3 origin = new Vector2(0, 0);
-        //    Vector3 point = new Vector2(1, 0);
-
-        //    var rotation = Quaternion.Euler(0, 0, currentAngle);
-        //    var rotatedPoint = rotation * (point - origin) + origin;
-
-        //    Gizmos.DrawLine(Vector3.zero, rotatedPoint);
-
-        //    currentAngle += angleIncrease;
-        //}
-
+        // -180° 到 180°
+        var rad = Mathf.Atan2(dir.y, dir.x);
+        return rad * Mathf.Rad2Deg;
     }
+
+    /// <summary>
+    /// 获取鼠标方向
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetDirection()
+    {
+        var m = _camera.ScreenToWorldPoint(Input.mousePosition);
+        //这里Vector3.zero为人物或物体起始点坐标
+        return m - Vector3.zero;
+    }
+
 }
