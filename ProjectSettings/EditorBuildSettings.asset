@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Demo/\u5176\u4ED6/1.\u573A\u666F\u5207\u6362/GameScene.unity"
+    path: "Assets/Demo/\u901A\u7528\u529F\u80FD/1.\u573A\u666F\u5207\u6362/GameScene.unity"
     guid: 2b65819e4cc69c04494180306d3415ef
   - enabled: 1
-    path: "Assets/Demo/\u5176\u4ED6/1.\u573A\u666F\u5207\u6362/Loading.unity"
+    path: "Assets/Demo/\u901A\u7528\u529F\u80FD/1.\u573A\u666F\u5207\u6362/Loading.unity"
     guid: c86bd940d9b04914e8c644218568a43a
   - enabled: 1
-    path: "Assets/Demo/\u5176\u4ED6/1.\u573A\u666F\u5207\u6362/MainScene.unity"
+    path: "Assets/Demo/\u901A\u7528\u529F\u80FD/1.\u573A\u666F\u5207\u6362/MainScene.unity"
     guid: da2d76b5446211a47a37f3c80c4be9ea
   m_configObjects: {}
