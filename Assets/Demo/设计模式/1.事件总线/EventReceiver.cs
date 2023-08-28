@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventReceiver : MonoBehaviour, IEventReceiver<TestEvent>
+namespace Demo.Patterns
 {
-    private void Awake()
+    public class EventReceiver : MonoBehaviour, IEventReceiver<TestEvent>
     {
-        //注册事件接收器
-        EventBus.Instance.Register(this);
-    }
+        private void Awake()
+        {
+            //注册事件接收器
+            EventBus.Instance.Register(this);
+        }
 
-    public void OnEvnet(TestEvent @event)
-    {
-        this.transform.position = @event.position;
+        public void OnEvnet(TestEvent @event)
+        {
+            this.transform.position = @event.position;
+        }
     }
 }

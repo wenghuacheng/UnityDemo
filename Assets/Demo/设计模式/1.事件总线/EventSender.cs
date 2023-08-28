@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventSender : MonoBehaviour
+namespace Demo.Patterns
 {
-    private void OnGUI()
+    public class EventSender : MonoBehaviour
     {
-        if (GUI.Button(new Rect(0,0,100,100), "≤‚ ‘"))
+        private void OnGUI()
         {
-            EventBus.Instance.Raise(new TestEvent(new Vector3(1, 0, 0)));
+            if (GUI.Button(new Rect(0, 0, 100, 100), "≤‚ ‘"))
+            {
+                EventBus.Instance.Raise(new TestEvent(new Vector3(1, 0, 0)));
+            }
         }
     }
 }

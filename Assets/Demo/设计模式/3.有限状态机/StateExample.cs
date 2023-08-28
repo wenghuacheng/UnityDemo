@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class StateExample : MonoBehaviour
+namespace Demo.Patterns
 {
-    [SerializeField] private List<Transform> pathList;
-
-    private FsmSystem<TestBotStatusEnum> _system;
-
-    void Start()
+    public class StateExample : MonoBehaviour
     {
-        _system = FsmFactory.CreateTestBotFsm(this.gameObject, pathList);
-    }
+        [SerializeField] private List<Transform> pathList;
 
-    // Update is called once per frame
-    void Update()
-    {
-        _system.Update();
-    }
+        private FsmSystem<TestBotStatusEnum> _system;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, 5);
+        void Start()
+        {
+            _system = FsmFactory.CreateTestBotFsm(this.gameObject, pathList);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            _system.Update();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(this.transform.position, 5);
+        }
     }
 }
