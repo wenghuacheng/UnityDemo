@@ -18,7 +18,7 @@ public class DamagePopup : MonoBehaviour
     private void Awake()
     {
         textMesh = GetComponent<TextMeshPro>();
-        textColor= textMesh.color;
+        textColor = textMesh.color;
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class DamagePopup : MonoBehaviour
         //淡化消失
         if (disappearTimer > 0)
             disappearTimer -= Time.deltaTime;
-        else 
+        else
         {
             textColor.a -= disappearSpeed * Time.deltaTime;
             textMesh.color = textColor;
@@ -44,7 +44,7 @@ public class DamagePopup : MonoBehaviour
     /// 设置伤害文字
     /// </summary>
     /// <param name="damage"></param>
-    public void Setup(int damage)
+    public void Setup(string damage)
     {
         textMesh.SetText(damage.ToString());
     }
@@ -58,7 +58,7 @@ public class DamagePopup : MonoBehaviour
     {
         var damagePopupTransform = Instantiate(damagePopupTemplate, position, Quaternion.identity);
         var damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
-        damagePopup.Setup(damage);
+        damagePopup.Setup(damage.ToString());
         return damagePopup;
     }
 }
