@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,31 +46,43 @@ namespace Demo.UI
             for (int i = 0; i < texts.Count; i++)
             {
                 var text = texts[i];
-                var rect = text.GetComponent<RectTransform>();
+
+                //延迟显示时间
+                float delay = i * 0.2f;
+                float offest = -1f;
 
                 //从左向右的效果
-                StartCoroutine(LeftToRightMoveText(rect, -30, i * 0.2f));
+                StartCoroutine(LeftToRightMoveText(text.transform, offest, delay));
+
+                //淡出效果
+                StartCoroutine(FadeText(text, delay));
             }
         }
 
         /// <summary>
-        /// 从左到右进入
+        /// 从左到右进入效果
         /// </summary>
         /// <param name="transform"></param>
         /// <param name="delay"></param>
         /// <returns></returns>
-        private IEnumerator LeftToRightMoveText(RectTransform transform, int offest, float delay)
+        private IEnumerator LeftToRightMoveText(Transform transform, float offest, float delay)
         {
-            var p = transform.position;
-            transform.position = new Vector3(offest, p.y, p.z);
+            //设置初始位置【这里不是世界坐标】
+            var p = transform.localPosition;
+            transform.localPosition = new Vector3(offest, p.y, p.z);
 
             yield return new WaitForSeconds(delay);
             transform.DOLocalMoveX(0, 0.3f);
         }
 
-        private IEnumerator FadeText(RectTransform transform, int offest, float delay)
+        /// <summary>
+        /// 淡出效果
+        /// </summary>
+        private IEnumerator FadeText(TextMeshPro textMesh, float delay)
         {
-
+            textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0);
+            yield return new WaitForSeconds(delay);
+            textMesh.DOFade(1, 1f);
         }
     }
 }

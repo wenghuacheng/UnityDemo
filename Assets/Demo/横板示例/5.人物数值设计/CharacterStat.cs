@@ -101,5 +101,16 @@ namespace HB.Demo.Stat
         }
 
 
+        public void Print()
+        {
+            Debug.Log("=========");
+
+            Debug.Log($"攻击:{majorStat.damage.GetValue()},魔法攻击:{majorStat.magicDamage.GetValue()},护甲:{majorStat.armor.GetValue()},生命值:{majorStat.health.GetValue()}，魔法值:{majorStat.mana.GetValue()},闪避值:{majorStat.evasion.GetValue()},速度:{majorStat.speed.GetValue()}");
+            Debug.Log($"攻击:{basicStat.damage.GetValue()},魔法攻击:{basicStat.magicDamage.GetValue()},护甲:{basicStat.armor.GetValue()},生命值:{basicStat.health.GetValue()}，魔法值:{basicStat.mana.GetValue()},闪避值:{basicStat.evasion.GetValue()},速度:{basicStat.speed.GetValue()}");
+            Debug.Log($"力量:{roleStat.strength.GetValue()},敏捷:{roleStat.agility.GetValue()},智力:{roleStat.intelligence.GetValue()},活力:{roleStat.stamina.GetValue()}，幸运:{roleStat.luck.GetValue()},韧性:{roleStat.resilience.GetValue()}");
+
+            Debug.Log("=========");
+        }
+
     }
 }

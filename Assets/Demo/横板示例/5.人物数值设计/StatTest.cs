@@ -22,6 +22,10 @@ namespace HB.Demo.Stat
                 Hit();
             else if (GUI.Button(new Rect(0, 60, 100, 30), "MagicAttack"))
                 MagicAttack();
+            else if (GUI.Button(new Rect(0, 90, 100, 30), "PrintPlayer"))
+                PrintPlayer();
+            else if (GUI.Button(new Rect(0, 120, 100, 30), "PrintTarget"))
+                PrintTarget();
         }
 
         /// <summary>
@@ -46,6 +50,22 @@ namespace HB.Demo.Stat
         private void MagicAttack()
         {
             stat.DoMagicDamage(target, MagicAttackType.fire);
+        }
+
+        /// <summary>
+        /// 打印玩家信息
+        /// </summary>
+        private void PrintPlayer()
+        {
+            stat.Print();
+        }
+
+        /// <summary>
+        /// 打印目标信息
+        /// </summary>
+        private void PrintTarget()
+        {
+            target.Print();
         }
     }
 }
