@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InfiniteScollItem : MonoBehaviour
+namespace Demo.UI
 {
-    [SerializeField] private TextMeshProUGUI text;
-
-    public void SetText(string value)
+    public class InfiniteScollItem : MonoBehaviour
     {
-        text.text = value;
-    }
+        [SerializeField] private TextMeshProUGUI text;
 
-    public string GetText()
-    {
-        return text.text;
+        public void SetText(string value)
+        {
+            text.text = value;
+        }
+
+        public string GetText()
+        {
+            return text.text;
+        }
     }
 }
