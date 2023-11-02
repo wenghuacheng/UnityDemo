@@ -2,13 +2,19 @@ using QFramework;
 using QFramework.Demo.Layers;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace QFramework.Demo.Layers
 {
     public class CounterAppController : MonoBehaviour, IController
     {
         private CounterAppModel _countModel;
+
+        [SerializeField] private TextMeshProUGUI textControl;
+        //到达成就时飘出数字
+        [SerializeField] private Transform damagePopupTemplate;
 
         #region IController
         /// <summary>
@@ -59,6 +65,10 @@ namespace QFramework.Demo.Layers
 
             //注册数量变更事件，由Command直接触发页面更新
             this.RegisterEvent<CountChangeEvent>(CountChangeEventHandler).UnRegisterWhenGameObjectDestroyed(gameObject);
+            this.RegisterEvent<AchievementEvent>(AchievementEventHandler).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+
+            UpdateView();
         }
 
         #region Event Handler
@@ -70,6 +80,15 @@ namespace QFramework.Demo.Layers
             UpdateView();
         }
 
+        /// <summary>
+        /// 获得成就
+        /// </summary>
+        /// <param name="event"></param>
+        private void AchievementEventHandler(AchievementEvent @event)
+        {
+            Vector3 worldPos = Vector3.zero;
+            var damagePopup = DamagePopup.Create(damagePopupTemplate, worldPos, @event.level);
+        }
 
         #endregion
 
@@ -78,7 +97,7 @@ namespace QFramework.Demo.Layers
         /// </summary>
         private void UpdateView()
         {
-
+            textControl.text = this._countModel.Count.Value.ToString();
         }
     }
 }

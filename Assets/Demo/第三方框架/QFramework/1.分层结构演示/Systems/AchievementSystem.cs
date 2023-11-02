@@ -10,6 +10,7 @@ namespace QFramework.Demo.Layers
     public class AchievementSystem : AbstractSystem
     {
         private CounterAppModel _countModel;
+        private Storage _storage;
 
         protected override void OnInit()
         {
@@ -25,7 +26,13 @@ namespace QFramework.Demo.Layers
         /// <param name="event"></param>
         private void CountChangeEventHander(CountChangeEvent @event)
         {
-            //通知界面处理
+            //todo：到达成就时通过Storage进行记录
+
+            if (_countModel.Count.Value % 10 == 0)
+            {
+                this.SendEvent<AchievementEvent>(new AchievementEvent() { level = _countModel.Count.Value });
+            }
+
         }
     }
 }
