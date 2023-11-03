@@ -1,0 +1,24 @@
+Adjustment调整
+Channel Mixer 混合颜色通道
+Contrast 设置对比度
+Hue 设置色调 range需要选normalized
+Invert Colors 反转颜色
+Replace Color 设置两个颜色通道互换，可调参数
+Saturation 设置饱和度
+White Balance 白平衡（调冷暖色调）
+Blend 混合
+Blend 混合两张图片，可调参数和混合模式
+Filter 过滤器
+Dither 添加抖动效果
+Mask 遮罩
+Channel Mask 可设置RGBA四个通道的遮罩，选中后只显示被选中的通道
+Color Mask 通过Color Tint 屏蔽选中的颜色，可设置Range和fuzziness（模糊度，用来颜色过渡）
+Normal 法线
+Normal Blend 混合法线贴图
+Normal From Height 通过灰度图生成法线贴图
+Normal From Texture通过其他贴图生成法线贴图
+Normal Reconstruct Z 通过x,y值重构有问题的法线值，很少用
+Normal Strength 修改法线强度
+Normal Unpack 特殊原因下法线贴图不能把type设置为normal会使用，一般最好别用
+Utility 实用功能
+Colorspace Conversion 颜色空间转换，用来把颜色分开，一般配合split使用

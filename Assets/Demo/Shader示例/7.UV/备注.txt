@@ -1,0 +1,10 @@
+Flipbook 用于帧动画，out连接 sample Texture 2D 的inUV
+Polar Coordinates 极坐标，像是可以把图片映射到球面，像太极
+Radial Shear 类似于变形的鱼眼扭曲
+Rotate 旋转贴图
+Spherize 球形扭曲
+Tiling And Offset 缩放平移设置
+Triplanar 感觉像是带有折射效果的布告板技术
+Twirl 旋涡扭曲效果
+Parallax Mapping
+Parallax Occlusion Mapping
