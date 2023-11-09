@@ -1,0 +1,3 @@
+通过time输出时间作为变量
+通过Tiling And Offest控制UV的偏移
+通过Sampler State将图形改为重复显示
