@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     public class DamagePopup : MonoBehaviour
     {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
-    [CreateAssetMenu(fileName = "Effect", menuName = "Stat/Effect", order = 2)]
+    [CreateAssetMenu(fileName = "Effect_", menuName = "人物数值/影响效果", order = 2)]
     public class EffectValueSO : ScriptableObject
     {
         public enum EffectTypeEnum

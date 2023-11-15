@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     /// <summary>
     /// 基础属性
     /// </summary>
-    [CreateAssetMenu(fileName = "Major", menuName = "Stat/Major", order = 1)]
+    [CreateAssetMenu(fileName = "Major", menuName = "人物数值/基础属性", order = 1)]
     public class MajorStatSO : ScriptableObject
     {
         //攻击

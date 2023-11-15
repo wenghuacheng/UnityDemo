@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     /// <summary>
     /// 状态事件处理

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
-    [CreateAssetMenu(fileName = "EffectList", menuName = "Stat/EffectList", order = 3)]
+    [CreateAssetMenu(fileName = "EffectList", menuName = "人物数值/影响效果列表", order = 3)]
     public class EffectValueListSO : ScriptableObject
     {
         //效果

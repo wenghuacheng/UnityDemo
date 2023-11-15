@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     public class StatTest : MonoBehaviour
     {
@@ -16,15 +16,13 @@ namespace HB.Demo.Stat
 
         private void OnGUI()
         {
-            if (GUI.Button(new Rect(0, 0, 100, 30), "Attack"))
+            if (GUI.Button(new Rect(0, 200, 100, 30), "Attack"))
                 Attack();
-            else if (GUI.Button(new Rect(0, 30, 100, 30), "Hit"))
-                Hit();
-            else if (GUI.Button(new Rect(0, 60, 100, 30), "MagicAttack"))
-                MagicAttack();
-            else if (GUI.Button(new Rect(0, 90, 100, 30), "PrintPlayer"))
+            else if (GUI.Button(new Rect(0, 230, 100, 30), "Hit"))
+                Hit();          
+            else if (GUI.Button(new Rect(0, 290, 100, 30), "PrintPlayer"))
                 PrintPlayer();
-            else if (GUI.Button(new Rect(0, 120, 100, 30), "PrintTarget"))
+            else if (GUI.Button(new Rect(0, 320, 100, 30), "PrintTarget"))
                 PrintTarget();
         }
 
@@ -44,13 +42,6 @@ namespace HB.Demo.Stat
             target.DoDamage(stat);
         }
 
-        /// <summary>
-        /// 魔法攻击
-        /// </summary>
-        private void MagicAttack()
-        {
-            stat.DoMagicDamage(target, MagicAttackType.fire);
-        }
 
         /// <summary>
         /// 打印玩家信息

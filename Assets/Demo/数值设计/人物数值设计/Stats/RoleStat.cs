@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     /// <summary>
     /// ½ÇÉ«ÊôÐÔ

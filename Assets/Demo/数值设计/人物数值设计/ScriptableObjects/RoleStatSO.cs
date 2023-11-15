@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HB.Demo.Stat
+namespace Demo.Design.Character.Stat
 {
     /// <summary>
     /// 角色属性
     /// </summary>
-    [CreateAssetMenu(fileName = "RoleStat", menuName = "Stat/RoleStat", order = 4)]
+    [CreateAssetMenu(fileName = "RoleStat", menuName = "人物数值/角色数值", order = 4)]
     public class RoleStatSO : ScriptableObject
     {
         //力量
