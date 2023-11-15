@@ -5,7 +5,11 @@ using UnityEngine;
 
 namespace Demo.Common.Grids
 {
-    public class Grid<T>
+    /// <summary>
+    /// 文本显示的网格
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class TextGrid<T>
     {
         //起始点【网格不可能一致是(0，0)点起始，会有偏移】
         private Vector3 originPosition;
@@ -17,7 +21,7 @@ namespace Demo.Common.Grids
         public event Action<int, int> OnGridValueChanged;
 
         #region Ctor
-        public Grid(int width, int height, float cellSize, Vector3 originPosition)
+        public TextGrid(int width, int height, float cellSize, Vector3 originPosition)
         {
             this.width = width;
             this.height = height;

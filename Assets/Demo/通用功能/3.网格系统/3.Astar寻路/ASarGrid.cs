@@ -6,26 +6,19 @@ using UnityEngine.UIElements;
 
 namespace Demo.Common.Grids
 {
-    public class ASarGrid : MonoBehaviour
+    public class ASarGrid : BaseRenderGrid
     {
-        [SerializeField] private int row;
-        [SerializeField] private int col;
-        [SerializeField] private Material lineMaterial;
         [SerializeField] private GameObject gridPrefab;
-
-        [SerializeField] private Camera _camera;
         private AStarGridArray<AStarGridCellData> gridDataArray;
         private AStarGridArray<AStarGridItemUI> gridUIArray;
-        private float gridWidth = 10f;
 
-        private List<LineRenderer> lineRenderList = new List<LineRenderer>();
         //起始单元格
         private AStarGridCellData startCell;
         //结束单元格
         private AStarGridCellData endCell;
 
         #region 初始化
-        private void Awake()
+        protected override void Awake()
         {
             gridDataArray = new AStarGridArray<AStarGridCellData>(row, col);
             InitializeCellData();
@@ -33,11 +26,6 @@ namespace Demo.Common.Grids
             InitializeCellUIItem();
             //初始化障碍物单元
             InitializeCellBlock();
-        }
-
-        void Start()
-        {
-            DrawGrid();
         }
 
         /// <summary>
@@ -105,7 +93,7 @@ namespace Demo.Common.Grids
         /// 元素点击
         /// </summary>
         /// <param name="obj"></param>
-        private void CellClickHandler(Vector2Int position)
+        protected override void CellClickHandler(Vector2Int position)
         {
             var data = gridUIArray.GetData(position.x, position.y);
             if (data == null) return;
@@ -153,70 +141,8 @@ namespace Demo.Common.Grids
 
         #endregion
 
-        #region 元素绘制
-
-        /// <summary>
-        /// 绘制网格
-        /// </summary>
-        private void DrawGrid()
-        {
-            //绘制行网格线
-            for (int i = 0; i <= row; i++)
-            {
-                Vector2 startPosition = new Vector2(0, i * gridWidth);
-                Vector2 endPosition = new Vector2(col * gridWidth, i * gridWidth);
-                CreateRenderLine(startPosition, endPosition, lineMaterial);
-            }
-
-            //绘制列网格线
-            for (int i = 0; i <= col; i++)
-            {
-                Vector2 startPosition = new Vector2(i * gridWidth, 0);
-                Vector2 endPosition = new Vector2(i * gridWidth, row * gridWidth);
-                CreateRenderLine(startPosition, endPosition, lineMaterial);
-            }
-        }
-
-        /// <summary>
-        /// 绘制线
-        /// </summary>
-        /// <param name="lineMaterial"></param>
-        /// <param name="lineWidth"></param>
-        private void CreateRenderLine(Vector2 startPosition, Vector2 endPosition, Material lineMaterial, float lineWidth = 0.1f)
-        {
-            GameObject go = new GameObject("LineRenderer");
-            go.transform.SetParent(transform);
-            var renderer = go.AddComponent<LineRenderer>();
-            renderer.startWidth = lineWidth;
-            renderer.endWidth = lineWidth;
-            renderer.SetPositions(new Vector3[] { startPosition, endPosition });
-            renderer.material = lineMaterial;
-            lineRenderList.Add(renderer);
-        }
-        #endregion
 
         #region 工具方法
-        /// <summary>
-        /// 是否有效的单元格位置
-        /// </summary>
-        /// <returns></returns>
-        private bool IsValidCellPosition(Vector2Int position)
-        {
-            return position.x >= 0 && position.y >= 0 && position.x < row && position.y < col;
-        }
-
-        /// <summary>
-        /// 获取鼠标点击的单元格
-        /// </summary>
-        private Vector2Int GetMouseClickCellPosition(Vector3 offest)
-        {
-            var worldPosition = _camera.ScreenToWorldPoint(Input.mousePosition) - offest;//需要减去原点偏移
-            int x = (int)(worldPosition.x / gridWidth);
-            int y = (int)(worldPosition.y / gridWidth);
-            var position = new Vector2Int(x, y);
-            return position;
-        }
-
         /// <summary>
         /// 刷新所有单元格
         /// </summary>

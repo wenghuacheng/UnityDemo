@@ -9,11 +9,11 @@ namespace Demo.Common.Grids
         [SerializeField] private Camera mCamera;
         [SerializeField] private HeatMapVisual heatMapVisual;
 
-        private Grid<int> grid;
+        private TextGrid<int> grid;
 
         void Start()
         {
-            grid = new Grid<int>(20, 10, 10f, Vector3.zero);
+            grid = new TextGrid<int>(20, 10, 10f, Vector3.zero);
             heatMapVisual.SetGird(grid);
         }
 

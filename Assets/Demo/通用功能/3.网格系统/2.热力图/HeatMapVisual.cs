@@ -6,7 +6,7 @@ namespace Demo.Common.Grids
 {
     public class HeatMapVisual : MonoBehaviour
     {
-        private Grid<int> grid;
+        private TextGrid<int> grid;
         private Mesh mesh;
 
         private void Awake()
@@ -28,7 +28,7 @@ namespace Demo.Common.Grids
         }
 
 
-        public void SetGird(Grid<int> grid)
+        public void SetGird(TextGrid<int> grid)
         {
             this.grid = grid;
             UpdateHeatMapVisual();
