@@ -22,5 +22,8 @@ namespace Demo.Design.Character.Stat
 
         //描述
         public string description;
+
+        //最大叠加数量
+        public int maxCount = 1;
     }
 }
