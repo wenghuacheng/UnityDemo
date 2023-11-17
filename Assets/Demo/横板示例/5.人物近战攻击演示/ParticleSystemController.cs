@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Demo.HB.Player.Attack
 {
+    /// <summary>
+    /// Á£×Ó¿ØÖÆ
+    /// </summary>
     public class ParticleSystemController : MonoBehaviour
     {
         private ParticleSystem ps;
@@ -13,10 +16,10 @@ namespace Demo.HB.Player.Attack
             ps = this.GetComponent<ParticleSystem>();
         }
 
-        public void Play()
+        public void Play(float time = 0.3f)
         {
             ps.Play();
-            Invoke("Stop", 0.3f);
+            Invoke("Stop", time);
         }
 
         public void Stop()

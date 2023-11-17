@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Demo.HB.Player.Attack
 {
+    /// <summary>
+    /// µ–»ÀΩ≈±æ
+    /// </summary>
     public class Enemy : MonoBehaviour
     {
         private int currentHealth = 5;

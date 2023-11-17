@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Demo.HB.Player.Attack
 {
+    /// <summary>
+    /// Íæ¼Ò½Å±¾
+    /// ¡¾¼òµ¥µÄ¹¥»÷Âß¼­ÑÝÊ¾¡¿
+    /// </summary>
     public class Player : MonoBehaviour
     {
         //¹¥»÷Î»ÖÃ
@@ -12,6 +16,9 @@ namespace Demo.HB.Player.Attack
         //¹¥»÷ÅÐ¶Ï·¶Î§
         [SerializeField] private float radiusX;
         [SerializeField] private float radiuxY;
+
+        //¶¯»­²Ù×÷
+        [SerializeField] private Animator animator;
 
         //¹¥»÷¼ä¸ôÓëÀäÈ´Ê±¼ä
         [SerializeField] private float attackInterval;
@@ -30,6 +37,7 @@ namespace Demo.HB.Player.Attack
             if (Input.GetMouseButtonDown(0) && attackCoolDown <= 0)
             {
                 attackCoolDown = attackInterval;
+                animator.SetBool("IsAttack", true);//²¥·Å¹¥»÷¶¯»­
                 Attack();
             }
         }
@@ -44,7 +52,7 @@ namespace Demo.HB.Player.Attack
             {
                 var enemey = collider.GetComponent<Enemy>();
                 if (enemey != null)
-                    enemey.TakeDamage(6);
+                    enemey.TakeDamage(1);
             }
         }
 
@@ -55,6 +63,15 @@ namespace Demo.HB.Player.Attack
         {
             Gizmos.color = Color.white;
             Gizmos.DrawWireCube(attackPosition.position, new Vector2(radiusX, radiuxY));
+        }
+
+
+        /// <summary>
+        /// ¹¥»÷¶¯»­½áÊø
+        /// </summary>
+        public void AttackEnd()
+        {
+            animator.SetBool("IsAttack", false);
         }
     }
 }
