@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 701886892}
   - component: {fileID: 701886891}
   - component: {fileID: 701886893}
+  - component: {fileID: 701886894}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -298,7 +299,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -388,9 +389,21 @@ PlatformEffector2D:
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
-  m_UseSideFriction: 0
+  m_UseSideFriction: 1
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &701886894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701886888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7075e59f06b375d4b83df46ecc659245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1821369956
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +463,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -744,3 +757,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163746f6dfd7be54fa47b47a42b02c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformEffector: {fileID: 701886893}
