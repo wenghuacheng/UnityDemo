@@ -4,10 +4,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class SceneDelayTest : MonoBehaviour
+namespace Demo.Other.SceneDemo
 {
-    private void Awake()
+    public class SceneDelayTest : MonoBehaviour
     {
-        Thread.Sleep(1000);
+        private void Awake()
+        {
+            Thread.Sleep(1000);
+        }
     }
 }

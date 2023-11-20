@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoaderCallback : MonoBehaviour
+namespace Demo.Other.SceneDemo
 {
-    private bool isFirstUpdate = true;
-
-    void Start()
+    public class SceneLoaderCallback : MonoBehaviour
     {
+        private bool isFirstUpdate = true;
 
-    }
-
-    void Update()
-    {
-        if (isFirstUpdate)
+        void Start()
         {
-            isFirstUpdate = false;
-            SceneLoader.LoaderCallback();
+
+        }
+
+        void Update()
+        {
+            if (isFirstUpdate)
+            {
+                isFirstUpdate = false;
+                SceneLoader.LoaderCallback();
+            }
         }
     }
 }

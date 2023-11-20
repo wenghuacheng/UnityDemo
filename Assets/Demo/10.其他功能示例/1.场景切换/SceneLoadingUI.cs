@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SceneLoadingUI : MonoBehaviour
+namespace Demo.Other.SceneDemo
 {
-    [SerializeField] private Image progressImage;
-
-    void Update()
+    public class SceneLoadingUI : MonoBehaviour
     {
-        progressImage.fillAmount = SceneLoader.GetLoadingProgress();
+        [SerializeField] private Image progressImage;
+
+        void Update()
+        {
+            progressImage.fillAmount = SceneLoader.GetLoadingProgress();
+        }
     }
 }

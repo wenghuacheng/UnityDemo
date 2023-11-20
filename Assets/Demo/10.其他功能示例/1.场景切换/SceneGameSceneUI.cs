@@ -4,16 +4,19 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SceneGameSceneUI : MonoBehaviour
+namespace Demo.Other.SceneDemo
 {
-    [SerializeField] private Button button;
-
-
-    void Start()
+    public class SceneGameSceneUI : MonoBehaviour
     {
-        button.onClick.AddListener(() =>
+        [SerializeField] private Button button;
+
+
+        void Start()
         {
-            SceneLoader.Load(SceneLoader.Scene.MainScene);
-        });
+            button.onClick.AddListener(() =>
+            {
+                SceneLoader.Load(SceneLoader.Scene.MainScene);
+            });
+        }
     }
 }
