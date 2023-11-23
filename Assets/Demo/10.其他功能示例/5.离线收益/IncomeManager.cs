@@ -24,6 +24,7 @@ namespace Demo.Other.IncomeDemo
 
         private void Awake()
         {
+            //获取离线金币与时间
             money = PlayerPrefs.GetInt(MoneyKey, 0);
             var dateTimeStr = PlayerPrefs.GetString(OfflineDateKey);
             if (!string.IsNullOrWhiteSpace(dateTimeStr))
@@ -51,6 +52,7 @@ namespace Demo.Other.IncomeDemo
         /// <param name="offlineDate"></param>
         private int CalculateOffline(DateTime offlineDate)
         {
+            //通过时间计算收益
             var timeSpan = DateTime.Now - offlineDate;
             int total = (int)timeSpan.TotalSeconds * SecondIncome;
 
