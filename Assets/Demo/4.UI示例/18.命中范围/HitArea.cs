@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Demo.UI.AreaCheck
+namespace Demo.UI.QTE
 {
     public class HitArea : MonoBehaviour
     {

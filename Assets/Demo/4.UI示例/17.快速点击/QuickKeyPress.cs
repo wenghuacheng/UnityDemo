@@ -1,30 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Demo.UI.QTE
 {
-    public class KeyboradQte : MonoBehaviour
+    public class QuickKeyPress : MonoBehaviour
     {
         public const KeyCode keyCode = KeyCode.A;
 
-        [SerializeField] private ProgressBar bar;
-        [SerializeField] private float decreaseSpeed = 5;
-        [SerializeField] private float increment = 0.2f;//一次点击时增加的量
+        [SerializeField] private Image bar;
+        [SerializeField] private float decreaseSpeed = 2f;//默认下降速度
+        [SerializeField] private float increment = 1f;//一次点击时增加的量
 
         private float value;
-        
+
+        #region 初始化
         void Start()
         {
             value = 80;
+            RefreshUI();
         }
+
+        #endregion
 
         void Update()
         {
-            KeyPress();
             AutoDecrease();
+            KeyPress();
             RefreshUI();
+            CheckValue();
         }
 
         /// <summary>
@@ -36,6 +41,7 @@ namespace Demo.UI.QTE
                 return;
 
             this.value += increment;
+            Debug.Log(this.value);
         }
 
         /// <summary>
@@ -47,11 +53,28 @@ namespace Demo.UI.QTE
         }
 
         /// <summary>
+        /// 判定结果
+        /// </summary>
+        private void CheckValue()
+        {
+            if (value >= 100)
+            {
+                Debug.Log("赢了");
+                Destroy(this.gameObject);
+            }
+            else if (value <= 0)
+            {
+                Debug.Log("输了");
+                Destroy(this.gameObject);
+            }
+        }
+
+        /// <summary>
         /// 刷新UI
         /// </summary>
         private void RefreshUI()
         {
-            bar.value = value;
+            bar.fillAmount = value / 100f;
         }
     }
 }
