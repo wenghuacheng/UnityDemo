@@ -43,7 +43,7 @@ namespace Demo.Common.SaveLoad
 
             if (gameData == null)
                 NewGame();
-           
+
             foreach (var manager in saveManagers)
             {
                 manager.LoadData(gameData);
@@ -83,16 +83,13 @@ namespace Demo.Common.SaveLoad
         }
 
 
-
-
-
         private void OnGUI()
         {
-            if (GUI.Button(new Rect(100, 0, 100, 100), "Save"))
+            if (GUI.Button(new Rect(0, 0, 100, 100), "Save"))
             {
                 SaveManager.instance.SaveGame();
             }
-            if (GUI.Button(new Rect(100, 100, 100, 100), "Load"))
+            if (GUI.Button(new Rect(0, 100, 100, 100), "Load"))
             {
                 SaveManager.instance.LoadGame();
             }
