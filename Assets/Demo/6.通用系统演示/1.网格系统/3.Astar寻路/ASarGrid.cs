@@ -77,7 +77,7 @@ namespace Demo.Common.Grids
         }
         #endregion
 
-        private void Update()
+        protected override void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {

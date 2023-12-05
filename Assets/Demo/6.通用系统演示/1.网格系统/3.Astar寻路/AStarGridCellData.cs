@@ -34,5 +34,8 @@ namespace Demo.Common.Grids
         //是否是正在搜索的单元格
         public bool isSearchingCell;
 
+        //父节点
+        public AStarGridCellData parent;
+
     }
 }
