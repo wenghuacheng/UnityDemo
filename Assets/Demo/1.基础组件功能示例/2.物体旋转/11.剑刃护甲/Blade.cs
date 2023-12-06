@@ -44,8 +44,12 @@ namespace Demo.Basic.Rotations.BladeArmor
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //OnBladeDestory?.Invoke(this);
-            //Destroy(this.gameObject);
+            //自己的剑刃触碰不能销毁
+            if (collision.transform.parent == this.transform.parent)
+                return;
+
+            OnBladeDestory?.Invoke(this);
+            Destroy(this.gameObject);
         }
     }
 }

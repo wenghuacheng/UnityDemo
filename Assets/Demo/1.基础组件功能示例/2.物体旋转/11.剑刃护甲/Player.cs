@@ -13,6 +13,7 @@ namespace Demo.Basic.Rotations.BladeArmor
         private List<Blade> blades = new List<Blade>();
         private float bladeInterval = 3;//剑刃与玩家的间距
 
+        private float slowBladeRotationSpeed = 15;//剑刃旋转速度
         private float bladeRotationSpeed = 30;//剑刃旋转速度
         private float fastBladeRotationSpeed = 45;//校准位置时剑刃旋转速度
 
@@ -20,7 +21,7 @@ namespace Demo.Basic.Rotations.BladeArmor
         private bool needAdjustBladePosition = false;
 
         //测试用于标记
-        private Color[] colors = new Color[] { Color.red, Color.yellow, Color.blue, Color.green, Color.grey, };
+        private Color[] colors = new Color[] { Color.red, Color.yellow, Color.blue, Color.green, Color.grey, Color.black, Color.cyan };
 
         void Update()
         {
@@ -49,7 +50,7 @@ namespace Demo.Basic.Rotations.BladeArmor
         {
             var blade = Instantiate(bladePrefab, transform.up * bladeInterval, Quaternion.identity, this.transform);
 
-            //blade.GetComponentInChildren<SpriteRenderer>().color = colors[blades.Count];//测试
+            blade.GetComponentInChildren<SpriteRenderer>().color = colors[blades.Count];//测试
 
             var b = blade.GetComponent<Blade>();
             b.OnBladeDestory += Blade_OnBladeDestory;
@@ -67,7 +68,8 @@ namespace Demo.Basic.Rotations.BladeArmor
                 needAdjustBladePosition = true;
             }
 
-            RefreshBladePosition();
+            //另一种可以直接刷新掉的方式
+            //RefreshBladePosition();
         }
 
 
@@ -84,6 +86,11 @@ namespace Demo.Basic.Rotations.BladeArmor
             {
                 axisBlade = null;
                 needAdjustBladePosition = false;
+            }
+            else
+            {
+                axisBlade = blades[blades.Count - 1];
+                needAdjustBladePosition = true;
             }
         }
 
@@ -102,16 +109,16 @@ namespace Demo.Basic.Rotations.BladeArmor
         /// </summary>
         private void AutoBladeRotateAroundSelf()
         {
-            CommonAutoBladeRotateAroundSelf();
+            //CommonAutoBladeRotateAroundSelf();
 
-            //if (!needAdjustBladePosition)
-            //{
-            //    CommonAutoBladeRotateAroundSelf();
-            //}
-            //else
-            //{
-            //    AdjustAutoBladeRotateAroundSelf();
-            //}
+            if (!needAdjustBladePosition)
+            {
+                CommonAutoBladeRotateAroundSelf();
+            }
+            else
+            {
+                AdjustAutoBladeRotateAroundSelf();
+            }
         }
 
         /// <summary>
@@ -137,17 +144,16 @@ namespace Demo.Basic.Rotations.BladeArmor
             var axis = new Vector3(0, 0, 1);//用于计算角度的基准轴
             var newBladeIndex = blades.IndexOf(axisBlade);
 
-            //测试
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < blades.Count; i++)
-            {
-                var blade = blades[i];
-                float bladeAngle = Vector3.SignedAngle(blade.transform.up, axisBlade.transform.up, axis);
-                sb.Append(bladeAngle + ",");
-            }
-            Debug.Log($"间距:{angle},各个角度{sb.ToString()}");
+            ////测试
+            //StringBuilder sb = new StringBuilder();
+            //for (int i = 0; i < blades.Count; i++)
+            //{
+            //    var blade = blades[i];
+            //    float bladeAngle = Vector3.SignedAngle(blade.transform.up, axisBlade.transform.up, axis);
+            //    sb.Append(bladeAngle + ",");
+            //}
+            //Debug.Log($"间距:{angle},各个角度{sb.ToString()}");
 
-            //bool isNeedAdjust = false;
             for (int i = 0; i < blades.Count; i++)
             {
                 var blade = blades[i];
@@ -161,35 +167,29 @@ namespace Demo.Basic.Rotations.BladeArmor
 
                 //计算两个向量的夹角
                 float bladeAngle = Vector3.SignedAngle(blade.transform.up, axisBlade.transform.up, axis);
-                bladeAngle = (bladeAngle + 360f) % 360f;//经过处理的角度，如左侧-45度转换为45度，45度转换为左侧315度
+                bladeAngle = (bladeAngle - 360f) % 360f;//经过处理的角度
+                bladeAngle = Mathf.Abs(bladeAngle);
 
                 var intervalCount = Mathf.Abs(newBladeIndex - i);
-                if (i < newBladeIndex)
-                {
-                    var mathAngle = intervalCount * angle;
+                var mathAngle = intervalCount * angle;
 
-                    if (!Mathf.Approximately(mathAngle, bladeAngle))
+                if (!Mathf.Approximately(mathAngle, bladeAngle))
+                {
+                    if (mathAngle <= bladeAngle)
                     {
-                        blade.AutoRotateAroundTarget(this.transform, fastBladeRotationSpeed);
+                        blade.AutoRotateAroundTarget(this.transform, slowBladeRotationSpeed);
                     }
                     else
                     {
-                        blade.AutoRotateAroundTarget(this.transform, bladeRotationSpeed);
+                        blade.AutoRotateAroundTarget(this.transform, fastBladeRotationSpeed);
                     }
                 }
                 else
                 {
-                    //应该在剑刃右侧
+                    //已经到达正确位置
+                    blade.AutoRotateAroundTarget(this.transform, bladeRotationSpeed);
                 }
             }
-
-            ////已经校准好了
-            //if (!isNeedAdjust)
-            //{
-            //    needAdjustBladePosition = false;
-            //    axisBlade = null;
-            //}
-
         }
 
         /// <summary>
