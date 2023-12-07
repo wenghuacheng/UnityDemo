@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Demo.Games.MatchShapes
 {
-    [CreateAssetMenu(fileName = "Shape_", menuName = "ÐÎ×´Æ¥Åä/ÐÎ×´")]
+    [CreateAssetMenu(fileName = "Shape_", menuName = "Æ¥ÅäÓÎÏ·/ÐÎ×´")]
     public class MatchShape : ScriptableObject
     {
         public string id;
