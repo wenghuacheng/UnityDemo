@@ -1,0 +1,1 @@
+混合分层方式，在水平分层的基础上细分领域。如Sprites下细分characters，Props

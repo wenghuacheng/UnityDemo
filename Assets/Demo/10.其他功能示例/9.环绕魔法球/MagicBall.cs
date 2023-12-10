@@ -10,14 +10,15 @@ namespace Demo.Other.BallSurround
         private SpriteRenderer _renderer;
         private int index = 0;
 
-        private float height = 3f;//垂直方向移动半径
-        private float radius = 2f;//水平方向移动半径
-        private float speed = 3f;//小球速度     
+        [SerializeField] private float height = 3f;//垂直方向移动半径
+        [SerializeField] private float radius = 2f;//水平方向移动半径
 
         //X轴的移动方向【-1，1】（从右到左，从左到右）
         [SerializeField] private int directionX = 1;
         [SerializeField] private int offest = 0;
 
+
+        private float speed = 3f;//小球速度     
 
         #region 初始化
         void Start()
@@ -59,10 +60,13 @@ namespace Demo.Other.BallSurround
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            //切换排序层，让其旋转时一会在前面，一会在后面
-            //这里时真的2d情况，3d情况修改Z轴即可实现
-            index = (index + 1) % sortingLayers.Length;
-            _renderer.sortingLayerID = sortingLayers[index];
+            if (collision.tag == "Player")
+            {
+                //切换排序层，让其旋转时一会在前面，一会在后面
+                //这里时真的2d情况，3d情况修改Z轴即可实现
+                index = (index + 1) % sortingLayers.Length;
+                _renderer.sortingLayerID = sortingLayers[index];
+            }
         }
     }
 }

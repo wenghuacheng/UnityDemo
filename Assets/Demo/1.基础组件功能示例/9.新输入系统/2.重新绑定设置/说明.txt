@@ -1,0 +1,13 @@
+这里需要导入input组件中sample的rebind UI
+导入后会出现在Samples/Input System/XXX/Rebinding UI
+将其中的RebindUIPrefab拖动到界面上即可，多个actionMap则拖动多个
+
+修改脚本中的控件
+1.修改样本示例UI文件夹中的Unity.InputSystem.RebindingUI。这是一个程序集。在Use GUIDS下，添加Unity.TextMeshPro。这样可以修改其下的脚本中引用的Text，我们需要缓存TextMeshPro控件
+2.编辑RebindActionUI脚本，将其中的Text改为
+3.修改RebindUIPrefab预制体中的Text控件，将其都改为TextMeshPro-Text(ui)
+
+绑定UI到RebindActionUI脚本
+1.将ActionNameText推拽到RebindActionUI脚本的Action Label属性
+2.将ActionBindingText推拽到RebindActionUI脚本的Binding Text属性
+3.创建一个等待遮罩，将其拖拽到Rebind Overlay

@@ -1,0 +1,2 @@
+1.通过菜单中的Input Action进行创建
+2.需要修改Action Type为value，Control Type为Vector(2)。这样才是控制角色方向。才有默认的WSAD绑定
