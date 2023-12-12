@@ -19,24 +19,19 @@ MonoBehaviour:
     m_Items:
     - rid: 8354494183803977888
   m_TableData:
-  - m_Id: 18294066040832
-    m_Localized: '{0}'
+  - m_Id: 1022172679561216
+    m_Localized: English Hello {0}-{1}
     m_Metadata:
       m_Items:
       - rid: 8354494183803977888
-  - m_Id: 9417270415360
-    m_Localized: Title
+  - m_Id: 1021273227845632
+    m_Localized: English Hello
     m_Metadata:
       m_Items: []
-  - m_Id: 19172235857920
-    m_Localized: '{0}'
-    m_Metadata:
-      m_Items:
-      - rid: 8354494183803977888
   references:
     version: 2
     RefIds:
     - rid: 8354494183803977888
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00d0ce719502000000d04e6ba310000000d04ee26f110000
+        m_Entries: 00d0ce719502000000d04e6ba310000000d04ee26f11000000e0761fa9a10300

@@ -18,37 +18,28 @@ namespace Demo.Common.Locailzations
         private string _name = "ZhangSan";
         private string _date;
 
-        private int i = 0;
-
         private float time;
-        private bool isLoaded;
+
+        #region 动态文本
+        private void OnEnable()
+        {
+            SetLocale(0);
+            localizedString.Arguments = new object[] { _name, _date };//设置动态文本中的参数
+            localizedString.StringChanged += LocalizedString_StringChanged;
+        }
 
         private void Update()
         {
             time -= Time.deltaTime;
-            if (time <= 0 && isLoaded)
+            if (time <= 0)
             {
                 time += 1;
                 _date = DateTime.Now.ToString("HH:mm:ss");
-                i++;
+
                 //参数内容发生变化，更新本地化参数
-                localizedString.Arguments[0] = i;//设置变更的参数值
+                localizedString.Arguments[1] = _date;//设置变更的参数值
                 localizedString.RefreshString();
             }
-        }
-
-        private void OnEnable()
-        {
-            LocalizationSettings.SelectedLocaleAsync.Completed += SelectedLocaleAsync_Completed;
-            SetLocale(0);
-            localizedString.Arguments = new object[] { i };//设置动态文本中的参数
-            localizedString.StringChanged += LocalizedString_StringChanged;
-        }
-
-        private void SelectedLocaleAsync_Completed(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Locale> obj)
-        {
-            Debug.Log("加载完成");
-            isLoaded = true;
         }
 
         private void OnDisable()
@@ -65,6 +56,7 @@ namespace Demo.Common.Locailzations
         {
             dynamicText.text = value;
         }
+        #endregion
 
 
         private void OnGUI()
@@ -79,6 +71,7 @@ namespace Demo.Common.Locailzations
             }
         }
 
+        #region 切换语言
         /// <summary>
         /// 切换语言
         /// </summary>
@@ -103,5 +96,6 @@ namespace Demo.Common.Locailzations
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[localeId];//在Project Setting中生成的语言顺序
             isSwitching = false;
         }
+        #endregion
     }
 }

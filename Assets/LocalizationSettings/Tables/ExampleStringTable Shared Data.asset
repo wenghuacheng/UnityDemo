@@ -15,16 +15,12 @@ MonoBehaviour:
   m_TableCollectionName: ExampleStringTable
   m_TableCollectionNameGuidString: 484d8aee3b96dea4991d16c040d9f855
   m_Entries:
-  - m_Id: 9417270415360
-    m_Key: TitleKey
+  - m_Id: 1021273227845632
+    m_Key: HelloKey
     m_Metadata:
       m_Items: []
-  - m_Id: 18294066040832
-    m_Key: aaa
-    m_Metadata:
-      m_Items: []
-  - m_Id: 19172235857920
-    m_Key: AAAA
+  - m_Id: 1022172679561216
+    m_Key: HelloNameKey
     m_Metadata:
       m_Items: []
   m_Metadata:
