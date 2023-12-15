@@ -9,7 +9,7 @@ namespace Demo.Games.SquidGame
     {
         private SpriteRenderer colorRenderer;
         private BossStateMachine stateMachine;
-
+     
         void Start()
         {
             colorRenderer = GetComponent<SpriteRenderer>();
