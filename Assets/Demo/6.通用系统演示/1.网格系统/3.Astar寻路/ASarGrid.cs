@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -142,7 +144,6 @@ namespace Demo.Common.Grids
 
         #endregion
 
-
         #region 工具方法
         /// <summary>
         /// 刷新所有单元格
@@ -163,7 +164,7 @@ namespace Demo.Common.Grids
         #region 算法相关
 
         private List<AStarGridCellData> openList = new List<AStarGridCellData>();
-        private List<AStarGridCellData> closeList = new List<AStarGridCellData>();
+        private HashSet<AStarGridCellData> closeList = new HashSet<AStarGridCellData>();
 
         //单元格八个方向
         private List<Vector2Int> cellNearAdjustmentList = new List<Vector2Int>()
@@ -194,20 +195,25 @@ namespace Demo.Common.Grids
                 yield return new WaitForSeconds(2);
 
                 var curCell = GetNearestCell(openList);
-                if (curCell == null)
-                    break;
 
-                curCell.isSearchingCell = true;
-                var result = OneStep(curCell);
-                if (result)
+                //当前节点需要从开放节点中删除
+                openList.Remove(curCell);
+                //当前节点与最终目标重合
+                if (curCell == endCell)
                 {
-                    Debug.Log("找到路了");
-                    curCell.isSearchingCell = false;
-                    RefreshAllCellUI();
+                    Debug.Log("到达目标");
+                    var cell = CreatePath(endCell);
+                    PrintPath(cell);
                     break;
                 }
 
-                curCell.isSearchingCell = false;
+                //将当前节点放入关闭列表中
+                closeList.Add(curCell);
+
+                curCell.isSearchingCell = true;
+                //进行一步寻路操作
+                OneStep(curCell);
+                curCell.isClosedCell = true;
 
                 RefreshAllCellUI();
             }
@@ -218,40 +224,39 @@ namespace Demo.Common.Grids
         /// <summary>
         /// 一次步骤
         /// </summary>
-        private bool OneStep(AStarGridCellData curCell)
+        private void OneStep(AStarGridCellData curCell)
         {
             //判断当前节点8个方向,将其放入到开放节点中
             var nearList = GetNearCell(curCell);
 
-            //当前节点向外扩张，可以放入已经处理的closeList中
-            openList.Remove(curCell);
-
-            curCell.isClosedCell = true;
-            closeList.Add(curCell);
-
-
-            //判断周围是否已经存在终点
-            bool isMatchEnd = IsMatchEndCell(nearList);
-            if (isMatchEnd)
-            {
-                //todo：记录结束节点
-                return true;
-            }
-
             //设置元素的g，h，f值
             foreach (var nearCell in nearList)
             {
-                if (!openList.Contains(nearCell) && !closeList.Contains(nearCell))
+                if (closeList.Contains(nearCell))//跳过已关闭的和障碍物
+                    continue;
+
+                //障碍物寻路加权
+                int obstacleDistance = 0;
+                if (nearCell.type == 3)
+                    obstacleDistance = AStarGridCellData.ObstacleDistance;
+
+                var newCostToNeighbour = curCell.gCost + GetCellDistance(nearCell, curCell) + obstacleDistance;
+                var isValidNeighbourNodeInOpenList = openList.Contains(nearCell);
+
+                //找到新的gcost最小的节点，或当前节点不包含与开放列表则设置其g,h值
+                if (!isValidNeighbourNodeInOpenList)
                 {
-                    //设置g和h的值
-                    nearCell.gCost = GetCellDistance(nearCell, startCell);
+                    nearCell.gCost = newCostToNeighbour;
                     nearCell.hCost = GetCellDistance(nearCell, endCell);
-                    openList.Add(nearCell);
+                    nearCell.parentNode = curCell;//设置回溯节点
+
+                    if (!isValidNeighbourNodeInOpenList)
+                    {
+                        openList.Add(nearCell);
+                    }
                 }
             }
             RefreshAllCellUI();
-
-            return false;
         }
 
         /// <summary>
@@ -259,22 +264,9 @@ namespace Demo.Common.Grids
         /// </summary>
         private AStarGridCellData GetNearestCell(List<AStarGridCellData> openList)
         {
-            AStarGridCellData minDistanceCell = null;
-            if (openList.Count <= 0) return minDistanceCell;
-
-            minDistanceCell = openList[0];
-            for (int i = 1; i < openList.Count; i++)
-            {
-                if (openList[i].fCost < minDistanceCell.fCost)
-                    minDistanceCell = openList[i];
-                else if (openList[i].fCost == minDistanceCell.fCost)
-                {
-                    //如果f相同则判断是否到终点的h值哪个最小
-                    if (openList[i].hCost < minDistanceCell.hCost)
-                        minDistanceCell = openList[i];
-                }
-            }
-            return minDistanceCell;
+            //由于节点实现了IComparable可以直接使用sort排序后取第一个
+            openList.Sort();
+            return openList.FirstOrDefault();
         }
 
         /// <summary>
@@ -312,13 +304,36 @@ namespace Demo.Common.Grids
         }
 
         /// <summary>
-        /// 判断周围节点是否已经到达终点
+        /// 创建路径
         /// </summary>
-        /// <param name="nearList"></param>
         /// <returns></returns>
-        private bool IsMatchEndCell(List<AStarGridCellData> nearList)
+        private Stack<AStarGridCellData> CreatePath(AStarGridCellData node)
         {
-            return nearList.Contains(endCell);
+            Stack<AStarGridCellData> result = new Stack<AStarGridCellData>();
+
+            AStarGridCellData cur = node;
+            while (cur.parentNode != null)
+            {
+                result.Push(cur);
+                cur = cur.parentNode;
+            }
+            result.Push(cur);
+
+            return result;
+        }
+
+        /// <summary>
+        /// 打印路径
+        /// </summary>
+        private void PrintPath(Stack<AStarGridCellData> stack)
+        {
+            List<Vector2Int> list = new List<Vector2Int>();
+            while (stack.Count > 0)
+            {
+                var item = stack.Pop();
+                list.Add(item.position);
+            }
+            Debug.Log(string.Join("-", list));
         }
         #endregion
     }

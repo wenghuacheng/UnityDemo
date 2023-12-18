@@ -13,7 +13,7 @@ namespace Demo.Games.BrickBreaker
         [SerializeField] private Transform startPosition;
 
         private float interval = 0.3f; //砖块间隔
-        private int row = 11;//行
+        private int row = 8;//行
         private int col = 10;//列
 
         private float platformInterval = 10;//平台与砖块的间距
