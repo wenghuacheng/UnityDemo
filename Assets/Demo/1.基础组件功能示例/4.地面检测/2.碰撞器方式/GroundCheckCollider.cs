@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundCheckCollider : MonoBehaviour
+namespace Demo.Basic.GroundCheckDemo
 {
-    [SerializeField] private bool isGround;
-
-    private void OnTriggerStay2D(Collider2D collision)
+    public class GroundCheckCollider : MonoBehaviour
     {
-        isGround=true;
-    }
+        [SerializeField] private bool isGround;
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isGround = false;
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            isGround = true;
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            isGround = false;
+        }
     }
 }
