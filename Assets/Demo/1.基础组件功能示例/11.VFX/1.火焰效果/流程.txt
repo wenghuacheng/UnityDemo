@@ -1,0 +1,19 @@
+1.创建一个Visual Effects->Visual Effect Graph
+2.属性面板中添加一个color。然后选择火焰颜色
+3.添加一个texture2d纹理，添加火焰纹理
+4.将这个纹理拖动到graph视图中，关联到【Output particle quad】中的Main Texture
+5.创建一个【blank Shader Graph】（空的shader）
+6.打开新建的【blank Shader Graph】，选择active target为【visual effect】
+7.同样创建color和texture2d纹理，并关联到basecolor上。color节点使用hdr（将sample texture2d的RGB连接到Fragment的Alpha上可以去除黑色背景）
+8.回到【Visual Effect Graph】界面，选择【Output particle quad】中的Shader Graph为刚才创建的【blank Shader Graph】
+9.将color拖动到界面上，连接选择的shader graph中的color。
+10.回到创建的【blank Shader Graph】界面，给纹理添加噪点voronoi
+11.添加power加强噪点，然后连接到
+12.回到【Visual Effect Graph】界面设置初始速度，旋转角度等参数。其中旋转角度为创建set angle节点并设置random参数为uniform
+13.再【Output particle quad】添加添加set size节点，并设置随机大小
+14.修改size over life为从大到小的曲线
+15.回到【Visual Effect Graph】添加，power，scale，speed三个参数控制噪点相关的变换，并添加一个time让噪点动起来。这样【Visual Effect Graph】就可以有多个参数进行调试
+16.添加sample curve和age over lifetime节点，让其可以基于时间变换（效果不太好）
+
+
+
