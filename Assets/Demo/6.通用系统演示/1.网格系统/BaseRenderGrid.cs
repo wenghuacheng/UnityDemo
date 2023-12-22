@@ -47,7 +47,10 @@ namespace Demo.Common.Grids
         /// 单元格点击
         /// </summary>
         /// <param name="position"></param>
-        protected abstract void CellClickHandler(Vector2Int position);
+        protected virtual void CellClickHandler(Vector2Int position)
+        {
+
+        }
 
         #region 元素绘制
 
@@ -102,6 +105,16 @@ namespace Demo.Common.Grids
         }
 
         /// <summary>
+        /// 获取鼠标当前的单元格
+        /// </summary>
+        /// <param name="offest"></param>
+        /// <returns></returns>
+        protected Vector2Int GetMouseCellPosition()
+        {
+            return GetMouseClickCellPosition(gridOffest);
+        }
+
+        /// <summary>
         /// 获取鼠标点击的单元格
         /// </summary>
         protected Vector2Int GetMouseClickCellPosition(Vector3 offest)
@@ -113,7 +126,7 @@ namespace Demo.Common.Grids
             return position;
         }
 
-
+    
         #endregion
     }
 }
