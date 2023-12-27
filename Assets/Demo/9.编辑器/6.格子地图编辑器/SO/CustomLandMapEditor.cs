@@ -33,6 +33,9 @@ namespace Demo.CustomEditor
             OpenWindow();
             _canvas = so;
 
+            //初始化样式渲染
+            _canvas.Initialize();
+
             return true;
         }
         #endregion
