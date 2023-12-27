@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace Demo.Games.CustomLandEditor
+namespace Demo.CustomEditor
 {
     /// <summary>
     /// ±à¼­Æ÷
