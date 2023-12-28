@@ -69,7 +69,7 @@ namespace Demo.Common.Grids
         /// </summary>
         private void InitializeCellBlock()
         {
-            //todo：当前的方式有问题，需要看一下正规的写法
+            //当前直接写死了
             gridDataArray.GetData(2, 0).type = 3;
             gridDataArray.GetData(2, 1).type = 3;
             gridDataArray.GetData(2, 2).type = 3;

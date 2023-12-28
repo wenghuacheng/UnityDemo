@@ -128,7 +128,7 @@ namespace Demo.Common.Grids
                     gridPlace[position.x, position.y] = 1;
                 }
             }
-            //在当前位置生成一个位置
+            //在当前位置生成一个物体
             var initializePosition = GetGridWorldPostion(clickCellPosition);
             Instantiate(curBuildPrefab, initializePosition, Quaternion.identity);
         }
