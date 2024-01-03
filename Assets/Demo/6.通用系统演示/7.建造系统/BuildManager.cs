@@ -37,7 +37,7 @@ namespace Demo.Common.Build
 
         private void Update()
         {
-            GhostFollowMousePosition();           
+            GhostFollowMousePosition();
         }
 
         #region 预建造
@@ -58,7 +58,9 @@ namespace Demo.Common.Build
         private void Build()
         {
             if (curBuilding == null || curGhostBuilding == null) return;
-            if (!CanBuild()) return;
+
+            if (!CanBuild())
+                return;
 
             //生成新的建筑
             var newBuilding = Instantiate(curBuilding.prefab, this.curGhostBuilding.transform.position, Quaternion.identity, this.transform);
