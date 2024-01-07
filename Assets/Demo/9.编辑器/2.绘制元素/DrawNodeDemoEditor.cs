@@ -1,10 +1,9 @@
-using Demo.CustomEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Demo.CustomEditor
+namespace Demo.CustomEditors
 {
     /// <summary>
     /// »æÖÆÔªËØÊ¾Àý

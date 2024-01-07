@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace Demo.CustomEditor
+namespace Demo.CustomEditors
 {
     /// <summary>
     /// 演示打开编辑器窗体

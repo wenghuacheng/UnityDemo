@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Demo.CustomEditor
+namespace Demo.CustomEditors
 {
     public enum CustomLandMapNodeType
     {

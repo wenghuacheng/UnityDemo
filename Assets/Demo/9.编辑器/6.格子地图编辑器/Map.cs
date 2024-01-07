@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Demo.CustomEditor
+namespace Demo.CustomEditors
 {
     public class Map : MonoBehaviour
     {
