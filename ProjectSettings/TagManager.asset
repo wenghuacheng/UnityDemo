@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ball
   - Obstacle
+  - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -36,7 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PostProcess
   - MiniMap
   - Other
   m_SortingLayers:
