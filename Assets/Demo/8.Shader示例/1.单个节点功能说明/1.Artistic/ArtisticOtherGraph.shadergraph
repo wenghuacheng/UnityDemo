@@ -56,10 +56,29 @@
         },
         {
             "m_Id": "fa6f920a6cc44dd28d4b6a35e81aef14"
+        },
+        {
+            "m_Id": "8f85f4d446f740898d1323a6d62c143a"
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "c99b4ff01d03453cbbfb6c2042868868"
+        },
+        {
+            "m_Id": "9d61ac33c06d470e9e0e0bc4c66c9491"
+        },
+        {
+            "m_Id": "1b10ead959a64c0488d8257a1585e5ff"
+        },
+        {
+            "m_Id": "0d8ea5d551e9414e9a57fd60ab13a992"
+        },
+        {
+            "m_Id": "7dee657fa38e485aa948ae6c1411125f"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -71,6 +90,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "62f9f8606b7f4c00ad40705cf6b54090"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "9643f0b4cb074a12a0bbbcb0de58f735"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "8f85f4d446f740898d1323a6d62c143a"
                 },
                 "m_SlotId": 0
             }
@@ -207,6 +240,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "0d8ea5d551e9414e9a57fd60ab13a992",
+    "m_Title": "",
+    "m_Content": "根据输入 In 中的等于输入 Mask Color 的值创建遮罩。\r\n",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -889.0,
+        "y": 733.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "0e7ce3f68fda4071a5f4acda2ba66887",
     "m_Id": 0,
@@ -266,6 +319,26 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Smoothness"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "1b10ead959a64c0488d8257a1585e5ff",
+    "m_Title": "",
+    "m_Content": "在下拉选单 Channels 中选择的通道上屏蔽输入 In 的值",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -917.0,
+        "y": 249.0,
+        "width": 200.0,
+        "height": 164.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -473,10 +546,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -685.0000610351563,
-            "y": 199.99998474121095,
+            "x": -685.0,
+            "y": 580.0,
             "width": 208.0,
-            "height": 350.0
+            "height": 350.00006103515627
         }
     },
     "m_Slots": [
@@ -567,6 +640,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "7dee657fa38e485aa948ae6c1411125f",
+    "m_Title": "",
+    "m_Content": "将输入 A 和 B 定义的两个法线贴图混合在一起。",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -912.0,
+        "y": 1111.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "80e7f27226574b358c05d2d32f70e9f7",
     "m_Group": {
@@ -629,6 +722,45 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.NormalTS"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.ChannelMaskNode",
+    "m_ObjectId": "8f85f4d446f740898d1323a6d62c143a",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Channel Mask",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -685.0,
+            "y": 217.00001525878907,
+            "width": 208.00003051757813,
+            "height": 313.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "c2b83716311f45eca5dc99276a2f7d3b"
+        },
+        {
+            "m_Id": "ba6ecb2376d54e2893e9aeab5d231598"
+        }
+    ],
+    "synonyms": [
+        "component mask"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "channel": 0,
+    "m_ChannelMask": -1
 }
 
 {
@@ -720,6 +852,26 @@
     },
     "isMainColor": false,
     "m_ColorMode": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "9d61ac33c06d470e9e0e0bc4c66c9491",
+    "m_Title": "",
+    "m_Content": "抖动 (Dither) 是特意用于将量化误差随机化的噪声形式。用于防止大尺寸图案，例如图像中的色带",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -935.0,
+        "y": -58.0,
+        "width": 225.0,
+        "height": 222.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -838,7 +990,55 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "ba6ecb2376d54e2893e9aeab5d231598",
+    "m_Id": 1,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "c202bb5ab360413db50899cbf7726647",
+    "m_Id": 0,
+    "m_DisplayName": "In",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "In",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "c2b83716311f45eca5dc99276a2f7d3b",
     "m_Id": 0,
     "m_DisplayName": "In",
     "m_SlotType": 0,
@@ -960,6 +1160,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c99b4ff01d03453cbbfb6c2042868868",
+    "m_Title": "",
+    "m_Content": "使用参数 Mode 定义的混合模式将输入 Blend 的值混合到输入 Base 上",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -894.0,
+        "y": -372.0,
+        "width": 200.0,
+        "height": 187.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1298,8 +1518,8 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -685.0000610351563,
-            "y": 613.0,
-            "width": 208.0,
+            "y": 999.0,
+            "width": 208.00003051757813,
             "height": 337.0
         }
     },

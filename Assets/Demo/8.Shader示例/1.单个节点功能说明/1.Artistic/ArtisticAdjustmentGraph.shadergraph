@@ -74,7 +74,29 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "b17fbe4fad824e5e9b0207fa0f3b8b11"
+        },
+        {
+            "m_Id": "b02f3c7f8f7948e3806039f0e2873c19"
+        },
+        {
+            "m_Id": "540a4ade5c9d437d9c62e8ef6738e2c7"
+        },
+        {
+            "m_Id": "5f0555df8e5a4b9faeda4d4a598a8369"
+        },
+        {
+            "m_Id": "35c468296ce64d129f5538fe416a4618"
+        },
+        {
+            "m_Id": "9bf3c37143fc49fe9aada4a738a54c0b"
+        },
+        {
+            "m_Id": "00439b0da0c34a0eb1c1ebef9574cf1c"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -250,6 +272,26 @@
             "m_Id": "599d2e311a944cb3b86e4a6961fbaef7"
         }
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "00439b0da0c34a0eb1c1ebef9574cf1c",
+    "m_Title": "",
+    "m_Content": "分别通过输入 Temperature 和 Tint 的数量来调整输入 In 的温度和色调",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -719.0,
+        "y": 1790.0,
+        "width": 200.0,
+        "height": 194.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -612,6 +654,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "35c468296ce64d129f5538fe416a4618",
+    "m_Title": "",
+    "m_Content": "将输入 In 中的值替换为输入 From 的值，等于输入 To 的值。",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -723.0,
+        "y": 1044.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "4087262da59f4685a587b3acb50abe21",
     "m_Id": 1,
@@ -749,6 +811,26 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "540a4ade5c9d437d9c62e8ef6738e2c7",
+    "m_Title": "",
+    "m_Content": "色调偏移量与输入偏移量相移。",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -692.0,
+        "y": 243.0,
+        "width": 200.0,
+        "height": 200.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "599d2e311a944cb3b86e4a6961fbaef7",
@@ -814,6 +896,26 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "5f0555df8e5a4b9faeda4d4a598a8369",
+    "m_Title": "",
+    "m_Content": "在每个通道的基础上反转输入 In 的颜色。",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -682.0,
+        "y": 621.0,
+        "width": 200.0,
+        "height": 168.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -995,7 +1097,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Saturation",
     "m_StageCapability": 3,
-    "m_Value": 0.4000000059604645,
+    "m_Value": 2.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -1206,6 +1308,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "9bf3c37143fc49fe9aada4a738a54c0b",
+    "m_Title": "",
+    "m_Content": "通过输入饱和度来调整输入 In 的饱和度",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -724.0,
+        "y": 1439.0,
+        "width": 200.0,
+        "height": 185.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "9cd819fbb37a47cfa0c2e42390abca20",
     "m_Group": {
@@ -1376,6 +1498,46 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Emission"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b02f3c7f8f7948e3806039f0e2873c19",
+    "m_Title": "",
+    "m_Content": "对比度\n",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -675.0,
+        "y": -121.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b17fbe4fad824e5e9b0207fa0f3b8b11",
+    "m_Title": "",
+    "m_Content": "控制每个输入输入通道对每个输出通道的贡献量。",
+    "m_TextSize": 1,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -654.0,
+        "y": -576.0,
+        "width": 200.0,
+        "height": 158.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
