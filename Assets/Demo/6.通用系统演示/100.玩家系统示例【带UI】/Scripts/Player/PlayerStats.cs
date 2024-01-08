@@ -7,7 +7,7 @@ namespace Demo.Common.PlayerSysWithUI
     /// <summary>
     /// 玩家状态信息
     /// </summary>
-    [CreateAssetMenu(fileName = "PlayerStats", menuName = "Player Stats")]
+    [CreateAssetMenu(fileName = "PlayerStats", menuName = "带UI演示/玩家系统/Player Stats")]
     public class PlayerStats : ScriptableObject
     {
         [Header("Config")]
