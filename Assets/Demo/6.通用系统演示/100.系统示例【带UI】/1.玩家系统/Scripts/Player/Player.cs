@@ -16,6 +16,8 @@ namespace Demo.Common.PlayerSysWithUI
         private void Awake()
         {
             playerAnimations = GetComponent<PlayerAnimations>();
+            //ÖØÖÃÉúÃüÖµ
+            stats.ResetPlayer();
         }
 
         public void ResetPlayer()

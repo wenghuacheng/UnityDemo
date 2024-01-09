@@ -30,6 +30,8 @@ namespace Demo.Common.PlayerSysWithUI
 
         public void TakeDamage(float amount)
         {
+            if (stats.Health <= 0) return;
+
             stats.Health -= amount;
             if (stats.Health <= 0f)
             {
