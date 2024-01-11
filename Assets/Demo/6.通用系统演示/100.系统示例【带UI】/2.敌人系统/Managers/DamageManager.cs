@@ -15,7 +15,11 @@ namespace Demo.Common.EnemySysWithUI
             Instance = this;
         }
 
-
+        /// <summary>
+        /// µ¯³öÉËº¦ÎÄ×Ö
+        /// </summary>
+        /// <param name="damageAmount"></param>
+        /// <param name="parent"></param>
         public void ShowDamageText(float damageAmount, Transform parent)
         {
             var text = Instantiate(damageTextPrefab, parent);

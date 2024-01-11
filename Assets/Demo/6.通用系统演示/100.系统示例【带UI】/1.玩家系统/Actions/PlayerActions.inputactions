@@ -72,6 +72,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Attack",
+            "id": "55f66a29-f3ce-4ef0-8b5f-4964f098fc5d",
+            "actions": [
+                {
+                    "name": "PlayerAttack",
+                    "type": "Button",
+                    "id": "feac9fab-92d4-459e-beb0-0815fe13a778",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "21b4e05b-bee9-425c-a382-357ad5d0fed5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

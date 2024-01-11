@@ -96,6 +96,34 @@ namespace Demo.Common.PlayerSysWithUI
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Attack"",
+            ""id"": ""55f66a29-f3ce-4ef0-8b5f-4964f098fc5d"",
+            ""actions"": [
+                {
+                    ""name"": ""PlayerAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""feac9fab-92d4-459e-beb0-0815fe13a778"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""21b4e05b-bee9-425c-a382-357ad5d0fed5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -103,6 +131,9 @@ namespace Demo.Common.PlayerSysWithUI
             // Movement
             m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
             m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
+            // Attack
+            m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
+            m_Attack_PlayerAttack = m_Attack.FindAction("PlayerAttack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -206,9 +237,59 @@ namespace Demo.Common.PlayerSysWithUI
             }
         }
         public MovementActions @Movement => new MovementActions(this);
+
+        // Attack
+        private readonly InputActionMap m_Attack;
+        private List<IAttackActions> m_AttackActionsCallbackInterfaces = new List<IAttackActions>();
+        private readonly InputAction m_Attack_PlayerAttack;
+        public struct AttackActions
+        {
+            private @PlayerActions m_Wrapper;
+            public AttackActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @PlayerAttack => m_Wrapper.m_Attack_PlayerAttack;
+            public InputActionMap Get() { return m_Wrapper.m_Attack; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(AttackActions set) { return set.Get(); }
+            public void AddCallbacks(IAttackActions instance)
+            {
+                if (instance == null || m_Wrapper.m_AttackActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_AttackActionsCallbackInterfaces.Add(instance);
+                @PlayerAttack.started += instance.OnPlayerAttack;
+                @PlayerAttack.performed += instance.OnPlayerAttack;
+                @PlayerAttack.canceled += instance.OnPlayerAttack;
+            }
+
+            private void UnregisterCallbacks(IAttackActions instance)
+            {
+                @PlayerAttack.started -= instance.OnPlayerAttack;
+                @PlayerAttack.performed -= instance.OnPlayerAttack;
+                @PlayerAttack.canceled -= instance.OnPlayerAttack;
+            }
+
+            public void RemoveCallbacks(IAttackActions instance)
+            {
+                if (m_Wrapper.m_AttackActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IAttackActions instance)
+            {
+                foreach (var item in m_Wrapper.m_AttackActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_AttackActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public AttackActions @Attack => new AttackActions(this);
         public interface IMovementActions
         {
             void OnMove(InputAction.CallbackContext context);
+        }
+        public interface IAttackActions
+        {
+            void OnPlayerAttack(InputAction.CallbackContext context);
         }
     }
 }

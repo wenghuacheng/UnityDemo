@@ -13,6 +13,7 @@ namespace Demo.Common.PlayerSysWithUI
         private readonly int moving = Animator.StringToHash("Moving");
         private readonly int death = Animator.StringToHash("Death");
         private readonly int revive = Animator.StringToHash("Revive");
+        private readonly int attacking = Animator.StringToHash("Attacking");
 
         private Animator animator;
 
@@ -36,6 +37,11 @@ namespace Demo.Common.PlayerSysWithUI
         {
             animator.SetFloat(moveX, dir.x);
             animator.SetFloat(moveY, dir.y);
+        }
+
+        public void SetAttackingAnimation(bool value)
+        {
+            animator.SetBool(attacking, value);
         }
 
         public void ResetPlayer()
