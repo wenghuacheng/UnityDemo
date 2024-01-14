@@ -777,6 +777,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1356403503103241040, guid: ef755a24377e0cb4d8649f014d4b2fa0, type: 3}
+      propertyPath: initialWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 6eeaaa5c3eb2b9e499fed7d78d934e3a, type: 2}
     - target: {fileID: 3524475798215308417, guid: ef755a24377e0cb4d8649f014d4b2fa0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2400,6 +2404,7 @@ GameObject:
   - component: {fileID: 2077537726}
   - component: {fileID: 2077537728}
   - component: {fileID: 2077537730}
+  - component: {fileID: 2077537731}
   m_Layer: 8
   m_Name: "EnemyBamboo\u3010\u968F\u673A\u8DEF\u5F84\u3011"
   m_TagString: Untagged
@@ -2658,6 +2663,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionObj: {fileID: 24965587}
+--- !u!114 &2077537731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077537718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6211d93ef2fd9c242a2348eb31e8af12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!212 &1731715301352915078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2727,6 +2745,7 @@ GameObject:
   - component: {fileID: 1731715301352915084}
   - component: {fileID: 1731715301352915085}
   - component: {fileID: 1731715301352915088}
+  - component: {fileID: 1731715301352915089}
   m_Layer: 8
   m_Name: "EnemyBambooPatrol\u3010\u8DEF\u5F84\u70B9\u5DE1\u903B\u3011"
   m_TagString: Untagged
@@ -2869,3 +2888,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionObj: {fileID: 1865530803}
+--- !u!114 &1731715301352915089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731715301352915079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6211d93ef2fd9c242a2348eb31e8af12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10

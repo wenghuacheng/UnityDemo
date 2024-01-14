@@ -19,6 +19,7 @@ namespace Demo.Common.PlayerSysWithUI
         private Player player;
 
         private Vector2 moveDirection;
+        public Vector2 MoveDirection => moveDirection;
 
         private void Awake()
         {
@@ -26,11 +27,6 @@ namespace Demo.Common.PlayerSysWithUI
             rb = GetComponent<Rigidbody2D>();
             playerAnimations = GetComponent<PlayerAnimations>();
             player = GetComponent<Player>();
-        }
-
-        private void Start()
-        {
-
         }
 
         private void Update()

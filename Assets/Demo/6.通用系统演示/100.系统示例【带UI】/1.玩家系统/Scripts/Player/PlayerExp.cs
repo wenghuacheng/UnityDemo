@@ -23,6 +23,7 @@ namespace Demo.Common.PlayerSysWithUI
 
         public void AddExp(float amount)
         {
+            stats.TotalExp += amount;
             stats.CurrentExp += amount;
             while (stats.CurrentExp >= stats.NextLevelExp)
             {
@@ -34,6 +35,7 @@ namespace Demo.Common.PlayerSysWithUI
         private void NextLevel()
         {
             stats.Level++;
+            stats.AttributePoints++;//添加可用属性点
             //计算下一级需要的经验
             float curExpRequired = stats.NextLevelExp;
             float newNextLevelExp = Mathf.RoundToInt(curExpRequired + stats.NextLevelExp * stats.ExpMultiplier / 100f);

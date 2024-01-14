@@ -21,3 +21,6 @@ MonoBehaviour:
   NextLevelExp: 100
   InitialNextLevelExp: 100
   ExpMultiplier: 50
+  BaseDamage: 2
+  CriticalDamage: 10
+  CriticalChance: 10

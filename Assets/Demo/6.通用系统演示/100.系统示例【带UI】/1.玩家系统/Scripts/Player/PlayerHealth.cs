@@ -28,6 +28,10 @@ namespace Demo.Common.PlayerSysWithUI
             }
         }
 
+        /// <summary>
+        /// 造成伤害
+        /// </summary>
+        /// <param name="amount"></param>
         public void TakeDamage(float amount)
         {
             if (stats.Health <= 0) return;
@@ -37,6 +41,28 @@ namespace Demo.Common.PlayerSysWithUI
             {
                 PlayerDead();
             }
+        }
+
+        /// <summary>
+        /// 恢复生命【拾取物品】
+        /// </summary>
+        /// <param name="amount"></param>
+        public void RestoreHealth(float amount)
+        {
+            stats.Health += amount;
+            if (stats.Health > stats.MaxHealth)
+            {
+                stats.Health = stats.MaxHealth;
+            }
+        }
+
+        /// <summary>
+        /// 是否可以恢复生命
+        /// </summary>
+        /// <returns></returns>
+        public bool CanRestoreHealth()
+        {
+            return stats.Health > 0 && stats.Health < stats.MaxHealth;
         }
 
         /// <summary>

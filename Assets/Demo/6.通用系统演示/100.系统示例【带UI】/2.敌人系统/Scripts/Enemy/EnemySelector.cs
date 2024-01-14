@@ -21,12 +21,12 @@ namespace Demo.Common.EnemySysWithUI
             EnemySelectorManager.OnEnemyUnSelected += OnEnemyUnSelectedHandler;
         }
 
-        private void OnEnemySelectedHandler(EnemyBrain obj)
+        public void OnEnemySelectedHandler(EnemyBrain obj)
         {
             selectionObj.SetActive(enemyBrain == obj);
         }
 
-        private void OnEnemyUnSelectedHandler()
+        public void OnEnemyUnSelectedHandler()
         {
             selectionObj.SetActive(false);
         }

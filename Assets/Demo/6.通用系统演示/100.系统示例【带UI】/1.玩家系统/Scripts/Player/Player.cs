@@ -12,10 +12,14 @@ namespace Demo.Common.PlayerSysWithUI
         public PlayerStats Stats => stats;
 
         private PlayerAnimations playerAnimations;
+        private PlayerMana playerMana;
+        private PlayerHealth playerHealth;
 
         private void Awake()
         {
             playerAnimations = GetComponent<PlayerAnimations>();
+            playerMana = GetComponent<PlayerMana>();
+            playerHealth = GetComponent<PlayerHealth>();
             //÷ÿ÷√…˙√¸÷µ
             stats.ResetPlayer();
         }
@@ -24,6 +28,7 @@ namespace Demo.Common.PlayerSysWithUI
         {
             stats.ResetPlayer();
             playerAnimations.ResetPlayer();
+            playerMana.Reset();
         }
     }
 }
