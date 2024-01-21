@@ -124,6 +124,54 @@ namespace Demo.Common.PlayerSysWithUI
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""bc4b8ec7-0476-4834-8a26-2ab586e69e00"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2e7a7c0-03ac-4e93-9e49-48108ecd48c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""30d7fa23-eccf-4d66-8e9c-5e5f7fbc1ca8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b6062d3c-716b-41f5-96d5-ab36cba30cd5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb41d402-38ce-4d0b-bb9a-d5ef934b1033"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -134,6 +182,10 @@ namespace Demo.Common.PlayerSysWithUI
             // Attack
             m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
             m_Attack_PlayerAttack = m_Attack.FindAction("PlayerAttack", throwIfNotFound: true);
+            // Dialogue
+            m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+            m_Dialogue_Interact = m_Dialogue.FindAction("Interact", throwIfNotFound: true);
+            m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -283,6 +335,60 @@ namespace Demo.Common.PlayerSysWithUI
             }
         }
         public AttackActions @Attack => new AttackActions(this);
+
+        // Dialogue
+        private readonly InputActionMap m_Dialogue;
+        private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+        private readonly InputAction m_Dialogue_Interact;
+        private readonly InputAction m_Dialogue_Continue;
+        public struct DialogueActions
+        {
+            private @PlayerActions m_Wrapper;
+            public DialogueActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Interact => m_Wrapper.m_Dialogue_Interact;
+            public InputAction @Continue => m_Wrapper.m_Dialogue_Continue;
+            public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+            public void AddCallbacks(IDialogueActions instance)
+            {
+                if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+            }
+
+            private void UnregisterCallbacks(IDialogueActions instance)
+            {
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
+                @Continue.started -= instance.OnContinue;
+                @Continue.performed -= instance.OnContinue;
+                @Continue.canceled -= instance.OnContinue;
+            }
+
+            public void RemoveCallbacks(IDialogueActions instance)
+            {
+                if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IDialogueActions instance)
+            {
+                foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public DialogueActions @Dialogue => new DialogueActions(this);
         public interface IMovementActions
         {
             void OnMove(InputAction.CallbackContext context);
@@ -290,6 +396,11 @@ namespace Demo.Common.PlayerSysWithUI
         public interface IAttackActions
         {
             void OnPlayerAttack(InputAction.CallbackContext context);
+        }
+        public interface IDialogueActions
+        {
+            void OnInteract(InputAction.CallbackContext context);
+            void OnContinue(InputAction.CallbackContext context);
         }
     }
 }
