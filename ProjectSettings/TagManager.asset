@@ -18,6 +18,7 @@ TagManager:
   - Ground
   - Player
   - Enemy
+  - Platform
   - 
   - 
   - 
@@ -36,8 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - GroundSensor
   - PostProcess
   - MiniMap
   - Other
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3788562255
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 845108801
     locked: 0
