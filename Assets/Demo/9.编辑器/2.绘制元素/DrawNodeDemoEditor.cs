@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
@@ -8,6 +10,7 @@ namespace Demo.CustomEditors
     /// <summary>
     /// 绘制元素示例
     /// </summary>
+#if UNITY_EDITOR
     public class DrawNodeDemoEditor : EditorWindow
     {
         //元素样式
@@ -16,13 +19,14 @@ namespace Demo.CustomEditors
         private List<NodeInfo> nodeList = new List<NodeInfo>();
 
         #region 打开窗体
+
         [MenuItem("绘制元素", menuItem = "自定义编辑器演示/2.绘制元素")]
         private static void OpenWindow()
         {
             //创建新窗体/获取已创建的窗体
             GetWindow<DrawNodeDemoEditor>("绘制元素");
         }
-        #endregion
+#endregion
 
         private void OnEnable()
         {
@@ -107,4 +111,5 @@ namespace Demo.CustomEditors
 
         #endregion
     }
+#endif
 }

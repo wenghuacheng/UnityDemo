@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
@@ -8,6 +10,7 @@ namespace Demo.CustomEditors
     /// <summary>
     /// 单个网格节点数据
     /// </summary>
+#if UNITY_EDITOR
     public class CustomLandMapNode : ScriptableObject
     {
         private GUIStyle nodeStyle;
@@ -59,4 +62,5 @@ namespace Demo.CustomEditors
             GUILayout.EndArea();
         }
     }
+#endif
 }

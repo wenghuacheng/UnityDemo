@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Callbacks;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
@@ -10,6 +12,7 @@ namespace Demo.CustomEditors
     /// <summary>
     /// 编辑器
     /// </summary>
+#if UNITY_EDITOR
     public class CustomLandMapEditor : EditorWindow
     {
         //地下城画布
@@ -38,6 +41,7 @@ namespace Demo.CustomEditors
 
             return true;
         }
+
         #endregion
 
         private Vector3 startPosition = new Vector3(10, 0, 0);
@@ -188,4 +192,5 @@ namespace Demo.CustomEditors
 
         #endregion
     }
+#endif
 }

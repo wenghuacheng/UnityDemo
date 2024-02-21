@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.DungeonEditor
 {
+#if UNITY_EDITOR
     /// <summary>
     /// 设置后会挂载到画布下
     /// </summary>
@@ -260,4 +263,5 @@ namespace Demo.DungeonEditor
                 return nodeStyle;
         }
     }
+#endif
 }

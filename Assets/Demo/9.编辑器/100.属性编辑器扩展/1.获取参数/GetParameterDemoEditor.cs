@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.Editors.PropertiesEditors.GetParameter
@@ -11,6 +13,7 @@ namespace Demo.Editors.PropertiesEditors.GetParameter
     /// <summary>
     /// 获取参数
     /// </summary>
+#if UNITY_EDITOR
     [CustomEditor(typeof(TestManager))]
     public class GetParameterDemoEditor : Editor
     {
@@ -35,4 +38,5 @@ namespace Demo.Editors.PropertiesEditors.GetParameter
             }
         }
     }
+#endif
 }

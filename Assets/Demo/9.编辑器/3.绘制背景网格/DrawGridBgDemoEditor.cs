@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
 {
+#if UNITY_EDITOR
     public class DrawGridBgDemoEditor : EditorWindow
     {
         //Êó±êÍÏ×§Æ«ÒÆÁ¿
@@ -73,4 +76,5 @@ namespace Demo.CustomEditors
             }
         }
     }
+#endif
 }

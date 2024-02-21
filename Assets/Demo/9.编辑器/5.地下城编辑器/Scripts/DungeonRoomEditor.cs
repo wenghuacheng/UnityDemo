@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Callbacks;
+#endif
 using UnityEngine;
 
 namespace Demo.DungeonEditor
@@ -11,6 +13,7 @@ namespace Demo.DungeonEditor
     /// <summary>
     /// 地下城编辑器
     /// </summary>
+#if UNITY_EDITOR
     public class DungeonRoomEditor : EditorWindow
     {
         //地下城画布
@@ -447,4 +450,5 @@ namespace Demo.DungeonEditor
         }
         #endregion
     }
+#endif
 }

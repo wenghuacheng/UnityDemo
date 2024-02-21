@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.Common.EnemySysWithUI
@@ -8,6 +10,7 @@ namespace Demo.Common.EnemySysWithUI
     /// <summary>
     /// Â·¾¶µã±à¼­Æ÷
     /// </summary>
+#if UNITY_EDITOR
     [CustomEditor(typeof(WayPoint))]
     public class WayPointEditor : Editor
     {
@@ -46,4 +49,5 @@ namespace Demo.Common.EnemySysWithUI
             }
         }
     }
+#endif
 }

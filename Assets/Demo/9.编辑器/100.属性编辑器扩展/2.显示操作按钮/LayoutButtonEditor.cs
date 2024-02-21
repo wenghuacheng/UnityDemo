@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.Editors.PropertiesEditors.LayoutButton
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(LayoutButtonDisplayManager))]
     public class LayoutButtonEditor : Editor
     {
@@ -69,4 +72,5 @@ namespace Demo.Editors.PropertiesEditors.LayoutButton
             serializedObject.ApplyModifiedProperties();
         }
     }
+#endif
 }

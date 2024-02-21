@@ -5,10 +5,11 @@ using UnityEngine;
 
 namespace Demo.CustomEditors
 {
+#if UNITY_EDITOR
     public class Map : MonoBehaviour
     {
-        [SerializeField] private CustomLandMapCanvas canvas;
 
+        [SerializeField] private CustomLandMapCanvas canvas;
         [SerializeField] private GameObject emptyCellPrefab;
         [SerializeField] private GameObject cellPrefab;
 
@@ -59,4 +60,5 @@ namespace Demo.CustomEditors
 
         }
     }
+#endif
 }

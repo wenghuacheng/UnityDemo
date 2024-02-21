@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 990465082
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 53a5c956888841ceeb9b0b7a201f97f2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2770209cd347978e5b5229a70c00ad36
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Demo/1.\u57FA\u7840\u7EC4\u4EF6\u529F\u80FD\u793A\u4F8B/12.\u8D44\u6E90\u52A0\u8F7D/2.AssetBundle\u65B9\u5F0F/Icon2.prefab"
+- "Assets/Demo/1.\u57FA\u7840\u7EC4\u4EF6\u529F\u80FD\u793A\u4F8B/12.\u8D44\u6E90\u52A0\u8F7D/2.AssetBundle\u65B9\u5F0F/Icon1.prefab"
+Dependencies: []

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Demo.Maps
 {
+#if UNITY_EDITOR
     public class MapBuilder : MonoBehaviour
     {
         //绘制的地图画布
@@ -247,4 +248,5 @@ namespace Demo.Maps
         }
         #endregion
     }
+#endif
 }

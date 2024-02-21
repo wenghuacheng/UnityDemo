@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Callbacks;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
@@ -9,6 +11,7 @@ namespace Demo.CustomEditors
     /// <summary>
     /// 演示打开编辑器窗体
     /// </summary>
+#if UNITY_EDITOR
     public class OpenWindowDemoEditor : EditorWindow
     {
         private static OpenWindowDemoSO _so;
@@ -20,7 +23,6 @@ namespace Demo.CustomEditors
             GetWindow<OpenWindowDemoEditor>("打开编辑器");
         }
 
-        
         [OnOpenAsset(0)]
         public static bool OnDoubleClickAsset(int instanceID, int line)
         {
@@ -34,4 +36,5 @@ namespace Demo.CustomEditors
             return true;
         }
     }
+#endif
 }

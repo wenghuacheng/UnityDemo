@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Demo.CustomEditors
 {
+#if UNITY_EDITOR
     public class DrawLineDemoEditor : EditorWindow
     {
         private List<LineInfo> lines = new List<LineInfo>();
@@ -140,4 +143,5 @@ namespace Demo.CustomEditors
         #endregion
 
     }
+#endif
 }

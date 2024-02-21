@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Demo.DungeonEditor
 {
+#if UNITY_EDITOR
     [CreateAssetMenu(fileName = "Level_", menuName = "地下城/房间画布")]
     public class RoomGraphCanvas : ScriptableObject
     {
@@ -44,4 +45,5 @@ namespace Demo.DungeonEditor
         }
 
     }
+#endif
 }
