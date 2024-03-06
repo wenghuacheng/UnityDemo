@@ -24,6 +24,7 @@ namespace Demo.Basic.InputDemo._10
             m_RebindStartEventProperty = serializedObject.FindProperty("m_RebindStartEvent");
             m_RebindStopEventProperty = serializedObject.FindProperty("m_RebindStopEvent");
             m_DisplayStringOptionsProperty = serializedObject.FindProperty("m_DisplayStringOptions");
+            m_ActionDisplayLableProperty = serializedObject.FindProperty("m_ActionDisplayName");
 
             RefreshBindingOptions();
         }
@@ -61,6 +62,7 @@ namespace Demo.Basic.InputDemo._10
                 EditorGUILayout.PropertyField(m_BindingTextProperty);
                 EditorGUILayout.PropertyField(m_RebindOverlayProperty);
                 EditorGUILayout.PropertyField(m_RebindTextProperty);
+                EditorGUILayout.PropertyField(m_ActionDisplayLableProperty);
             }
 
             // Events section.
@@ -158,6 +160,7 @@ namespace Demo.Basic.InputDemo._10
         private SerializedProperty m_RebindStopEventProperty;
         private SerializedProperty m_UpdateBindingUIEventProperty;
         private SerializedProperty m_DisplayStringOptionsProperty;
+        private SerializedProperty m_ActionDisplayLableProperty;
 
         private GUIContent m_BindingLabel = new GUIContent("Binding");
         private GUIContent m_DisplayOptionsLabel = new GUIContent("Display Options");

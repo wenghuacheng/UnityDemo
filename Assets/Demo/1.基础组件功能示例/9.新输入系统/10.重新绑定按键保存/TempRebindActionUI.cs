@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -51,9 +52,22 @@ namespace Demo.Basic.InputDemo._10
         }
 
         /// <summary>
+        /// 按键标题显示
+        /// </summary>
+        public string actionDisplayName
+        {
+            get => m_ActionDisplayName;
+            set
+            {
+                m_ActionDisplayName = value;
+                UpdateBindingDisplay();
+            }
+        }
+
+        /// <summary>
         /// Text component that receives the name of the action. Optional.
         /// </summary>
-        public Text actionLabel
+        public TextMeshProUGUI actionLabel
         {
             get => m_ActionLabel;
             set
@@ -67,7 +81,7 @@ namespace Demo.Basic.InputDemo._10
         /// Text component that receives the display string of the binding. Can be <c>null</c> in which
         /// case the component entirely relies on <see cref="updateBindingUIEvent"/>.
         /// </summary>
-        public Text bindingText
+        public TextMeshProUGUI bindingText
         {
             get => m_BindingText;
             set
@@ -82,7 +96,7 @@ namespace Demo.Basic.InputDemo._10
         /// </summary>
         /// <seealso cref="startRebindEvent"/>
         /// <seealso cref="rebindOverlay"/>
-        public Text rebindPrompt
+        public TextMeshProUGUI rebindPrompt
         {
             get => m_RebindText;
             set => m_RebindText = value;
@@ -377,6 +391,9 @@ namespace Demo.Basic.InputDemo._10
         private InputActionReference m_Action;
 
         [SerializeField]
+        private string m_ActionDisplayName;//[新增标题显示]
+
+        [SerializeField]
         private string m_BindingId;
 
         [SerializeField]
@@ -385,11 +402,11 @@ namespace Demo.Basic.InputDemo._10
         [Tooltip("Text label that will receive the name of the action. Optional. Set to None to have the "
             + "rebind UI not show a label for the action.")]
         [SerializeField]
-        private Text m_ActionLabel;
+        private TextMeshProUGUI m_ActionLabel;
 
         [Tooltip("Text label that will receive the current, formatted binding string.")]
         [SerializeField]
-        private Text m_BindingText;
+        private TextMeshProUGUI m_BindingText;
 
         [Tooltip("Optional UI that will be shown while a rebind is in progress.")]
         [SerializeField]
@@ -397,7 +414,7 @@ namespace Demo.Basic.InputDemo._10
 
         [Tooltip("Optional text label that will be updated with prompt for user input.")]
         [SerializeField]
-        private Text m_RebindText;
+        private TextMeshProUGUI m_RebindText;
 
         [Tooltip("Event that is triggered when the way the binding is display should be updated. This allows displaying "
             + "bindings in custom ways, e.g. using images instead of text.")]
@@ -434,7 +451,11 @@ namespace Demo.Basic.InputDemo._10
             if (m_ActionLabel != null)
             {
                 var action = m_Action?.action;
-                m_ActionLabel.text = action != null ? action.name : string.Empty;
+                //显示自定义的标题
+                if (!string.IsNullOrWhiteSpace(m_ActionDisplayName))
+                    m_ActionLabel.text = m_ActionDisplayName;
+                else
+                    m_ActionLabel.text = action != null ? action.name : string.Empty;
             }
         }
 
