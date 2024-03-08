@@ -279,6 +279,8 @@ namespace Demo.Basic.InputDemo._10
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
+                .WithCancelingThrough("<Keyboard>/escape")//【新增】在重新绑定页面可以通过改键取消按键设置
+                .WithControlsExcluding("<Keyboard>/h")//【新增】不可使用的按键，如果使用了该按键会变为AnyKey
                 .OnCancel(
                     operation =>
                     {
