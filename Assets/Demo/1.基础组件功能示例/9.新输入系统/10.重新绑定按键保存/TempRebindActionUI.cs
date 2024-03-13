@@ -264,6 +264,7 @@ namespace Demo.Basic.InputDemo._10
             }
         }
 
+        private string pathBeforeThisRebind;
         private void PerformInteractiveRebind(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
@@ -276,6 +277,8 @@ namespace Demo.Basic.InputDemo._10
 
             //【新增】
             action.Disable();
+            //【新增】记录当前修改的原始键位
+            pathBeforeThisRebind = action.bindings[bindingIndex].effectivePath;
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
@@ -297,6 +300,10 @@ namespace Demo.Basic.InputDemo._10
                     {
                         m_RebindOverlay?.SetActive(false);
                         m_RebindStopEvent?.Invoke(this, operation);
+
+                        //【新增】判断是否按键重复，进行交换
+                        CheckAndSwapDuplicates(action, bindingIndex, pathBeforeThisRebind);
+
                         UpdateBindingDisplay();
                         CleanUp();
 
@@ -337,6 +344,49 @@ namespace Demo.Basic.InputDemo._10
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
 
             m_RebindOperation.Start();
+        }
+
+        /// <summary>
+        /// 重复键交换
+        /// </summary>
+        private void CheckAndSwapDuplicates(InputAction action, int bindingIndex, string pathBeforeRebind)
+        {
+            InputBinding currentBinding = action.bindings[bindingIndex];
+            bool canBreak = false;
+            foreach (var otherAction in action.actionMap)
+            {
+                if (canBreak)
+                    break;
+
+                int otherBindingIndex = -1;
+                if (otherAction != action)
+                {
+                    foreach (var otherBinding in otherAction.bindings)
+                    {
+                        otherBindingIndex++;
+                        if (otherBinding.effectivePath == currentBinding.effectivePath)
+                        {
+                            otherAction.ApplyBindingOverride(otherBindingIndex, pathBeforeRebind);
+                            canBreak = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var otherBinding in otherAction.bindings)
+                    {
+                        otherBindingIndex++;
+                        if (otherBinding.isPartOfComposite && otherBindingIndex != bindingIndex)
+                        {
+                            if (otherBinding.effectivePath == currentBinding.effectivePath)
+                            {
+                                otherAction.ApplyBindingOverride(otherBindingIndex, pathBeforeRebind);
+                                canBreak = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         protected void OnEnable()
