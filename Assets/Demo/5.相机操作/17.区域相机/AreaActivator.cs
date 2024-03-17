@@ -11,14 +11,14 @@ namespace Demo.CustomCamera.AreaMove
     {
         [SerializeField] private CinemachineConfiner2D confiner;
 
-
+        private PolygonCollider2D polygon;
 
         private void Awake()
         {
-            var polygon = this.AddComponent<PolygonCollider2D>();
-            polygon.isTrigger=true;
+            polygon = this.AddComponent<PolygonCollider2D>();
+            polygon.isTrigger = true;
             var c = GetComponent<CompositeCollider2D>();
-           
+            var t = GetComponent<TilemapCollider2D>();
 
             List<Vector2> points = new List<Vector2>();
             points.Add(new Vector2(c.bounds.min.x, c.bounds.min.y));
@@ -27,18 +27,24 @@ namespace Demo.CustomCamera.AreaMove
             points.Add(new Vector2(c.bounds.min.x, c.bounds.max.y));
             polygon.points = points.ToArray();
 
+            t.enabled = false;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!(collision is PolygonCollider2D)) return;
             Debug.Log("½øÈë");
-            confiner.m_BoundingShape2D = collision;
+            confiner.m_BoundingShape2D = polygon;
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             Debug.Log("Àë¿ª");
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (confiner.m_BoundingShape2D != polygon)
+                confiner.m_BoundingShape2D = polygon;
         }
     }
 }
