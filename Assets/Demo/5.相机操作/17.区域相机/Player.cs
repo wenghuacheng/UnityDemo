@@ -7,23 +7,19 @@ namespace Demo.CustomCamera.AreaMove
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private CinemachineConfiner2D confiner;
+        private Rigidbody2D rb;
 
         private void Awake()
         {
-            
+            rb = GetComponent<Rigidbody2D>();
         }
 
         void Update()
         {
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");
-            this.transform.Translate(new Vector3(x, y) * Time.deltaTime * 8);
+            rb.velocity = new Vector2(x,y)*3;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            confiner.m_BoundingShape2D = collision;
-        }
     }
 }
