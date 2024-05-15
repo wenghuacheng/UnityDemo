@@ -116,13 +116,6 @@
       },
       "url": "https://packages.unity.cn"
     },
-    "com.unity.collab-proxy": {
-      "version": "2.0.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.cn"
-    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -143,15 +136,6 @@
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "2.2.4"
       }
-    },
-    "com.unity.ide.rider": {
-      "version": "3.0.18",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.cn"
     },
     "com.unity.ide.visualstudio": {
       "version": "2.0.17",
@@ -211,17 +195,6 @@
       },
       "url": "https://packages.unity.cn"
     },
-    "com.unity.probuilder": {
-      "version": "5.0.7",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.settings-manager": "1.0.3",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0"
-      },
-      "url": "https://packages.unity.cn"
-    },
     "com.unity.render-pipelines.core": {
       "version": "12.1.10",
       "depth": 1,
@@ -253,13 +226,6 @@
     "com.unity.searcher": {
       "version": "4.9.1",
       "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.cn"
-    },
-    "com.unity.settings-manager": {
-      "version": "1.0.3",
-      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.cn"
