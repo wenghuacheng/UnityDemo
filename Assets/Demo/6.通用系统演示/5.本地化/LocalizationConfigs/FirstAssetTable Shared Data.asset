@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: FirstAssetTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: FirstAssetTable
+  m_TableCollectionNameGuidString: 93fc05c8b55fa8d4084d7a036a18ccc1
+  m_Entries:
+  - m_Id: 18302495023104
+    m_Key: abc
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 424026063157854225
+  m_KeyGenerator:
+    rid: 424026060316999694
+  references:
+    version: 2
+    RefIds:
+    - rid: 424026060316999694
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1713762888779
+    - rid: 424026063157854225
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 18302495023104
+          m_TableCodes:
+          - zh-Hans
+          - en
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

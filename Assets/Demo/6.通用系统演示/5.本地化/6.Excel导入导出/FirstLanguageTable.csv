@@ -1,0 +1,7 @@
+﻿Key,Id,Chinese (Simplified)(zh-Hans),English(en)
+Hello,2.77E+11,Chinese Hello,English Hello
+HelloB,5.02E+13,"Chinese Hello {0},{1}","English Hello {0},{1}"
+AAA,,AAA,aaa
+BBB,,BBB,bbb
+,,,
+在Localization Table的Tab页上右键，有export和import两个功能,,,

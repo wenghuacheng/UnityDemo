@@ -1,0 +1,3 @@
+需要安装URP渲染管线
+需要安装Visual Effect Graph和shaderGraph
+perferences设置->visualEffect。需要勾选Experimental Operators/Blocks

@@ -1,0 +1,3 @@
+通过UXML文件制作布局【对应HTML】
+通过USS Style文件设定样式(外联样式，可复用)【对应CSS】
+通过Behavior脚本绑定数据【对应Javascript】

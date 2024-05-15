@@ -1,0 +1,1 @@
+需要修改UniversalRenderPipelineAsset2D_Renderer中Camera sorting layer texture中的sorting layer

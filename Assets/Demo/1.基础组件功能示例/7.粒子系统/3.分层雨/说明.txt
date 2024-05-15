@@ -1,0 +1,7 @@
+--分为前景雨，中景雨，背景雨。前景雨粒子大无碰撞，中景雨粒子适中有碰撞和弹力，背景雨粒子小无碰撞
+中景雨
+1.将start speed改为0，通过修改velocity over lifetime来实现雨滴下降
+2.通过将renderer中的redner mode改为stretched billborad。修改speed scale可以实现将雨滴拉长
+3.修改gravity modifier，这样可以让雨滴贴在地上
+4.修改collision中的lefetime loss，即粒子接触到地面后消失的时间
+5.前景雨和背景雨拷贝中景雨，去掉collision，修改sorting layer，修改大小，数量，颜色等参数

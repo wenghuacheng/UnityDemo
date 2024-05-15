@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/Demo/10.\u5176\u4ED6\u529F\u80FD\u793A\u4F8B/1.\u573A\u666F\u5207\u6362/GameScene.unity"
+    guid: 2b65819e4cc69c04494180306d3415ef
+  - enabled: 1
+    path: "Assets/Demo/10.\u5176\u4ED6\u529F\u80FD\u793A\u4F8B/1.\u573A\u666F\u5207\u6362/Loading.unity"
+    guid: c86bd940d9b04914e8c644218568a43a
+  - enabled: 1
+    path: "Assets/Demo/10.\u5176\u4ED6\u529F\u80FD\u793A\u4F8B/1.\u573A\u666F\u5207\u6362/MainScene.unity"
+    guid: da2d76b5446211a47a37f3c80c4be9ea
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 5435551b7db63ff4a832a8c89b5df6f3, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: ab5686c877c154f4ab33284af45f11a8, type: 2}

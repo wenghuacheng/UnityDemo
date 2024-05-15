@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04cad82a44f46b41b8a83b3ee407d4b, type: 3}
+  m_Name: Dialogue_Boy
+  m_EditorClassIdentifier: 
+  Name: Boy
+  Icon: {fileID: 21300000, guid: 10e813676fbbf1247b4d3e83f556c13b, type: 3}
+  HasInteraction: 0
+  InteractionType: 0
+  Greeting: Hello
+  Dialogue:
+  - AAAAAAA
+  - BBBBBBB

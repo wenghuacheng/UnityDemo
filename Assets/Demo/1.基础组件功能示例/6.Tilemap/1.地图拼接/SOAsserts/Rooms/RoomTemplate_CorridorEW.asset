@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: RoomTemplate_CorridorEW
+  m_EditorClassIdentifier: Assembly-CSharp:Demo.Maps:RoomTemplateSO
+  roomPrefab: {fileID: 6844972866812261865, guid: f28a83cf41c5e454186abfb5f5da90d4, type: 3}
+  lowerBound: {x: -6, y: 1}
+  upperBound: {x: 8, y: 5}
+  doorList:
+  - entrancePosition: {x: -6, y: 3}
+    lowerBound: {x: -6, y: 1}
+    upperBound: {x: -6, y: 5}
+    direction: 1
+    isConnected: 0
+  - entrancePosition: {x: 8, y: 3}
+    lowerBound: {x: 8, y: 1}
+    upperBound: {x: 8, y: 5}
+    direction: 2
+    isConnected: 0
+  roomNodeType: {fileID: 11400000, guid: 1a82886d18882034caa1c434b0501631, type: 2}

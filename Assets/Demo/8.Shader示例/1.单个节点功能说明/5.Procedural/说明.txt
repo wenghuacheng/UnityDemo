@@ -1,0 +1,11 @@
+Noise 噪声
+Gradient Noise
+Simple Noise
+Voronoi
+Shapes 形状
+Ellipse 圆
+Polygon 多边形
+Rectangle 四边形
+Rounded Polygon 圆角多边形
+Rounded Rectangle 圆角四边形
+Checkerboard 棋盘图案

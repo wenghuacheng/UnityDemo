@@ -1,0 +1,19 @@
+Logic 逻辑（bool）
+All
+And
+Any
+Branch 分支，TRUE执行in1，FALSE执行in2
+Comparison 比较两个输入
+Is Front Face 是否正面
+Is Infinite 是否无穷大
+Is Na​N 是否合法数字
+Nand 即not and
+Not
+Or
+High Definition Render Pipeline 高清管线渲染
+Emission
+Eye
+Custom Function
+Keyword
+Preview 显示颜色预览
+Sub Graph

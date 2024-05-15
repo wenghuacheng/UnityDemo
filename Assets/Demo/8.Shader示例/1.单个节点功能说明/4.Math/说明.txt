@@ -1,0 +1,75 @@
+Advanced 高级
+Absolute 绝对值
+Exponential 指数
+Length 向量的模
+Log log()函数
+Modulo 除法的余数
+Negate 对输入取反向，例如1变-1，0变1
+Normalize 归一化
+Posterize 取余
+Reciprocal 倒数，类似除法
+Reciprocal Square Root 倒数平方根
+Basic 基本
+Add 加
+Divide 除
+Multiply 乘
+Power 平方
+Square Root 开平方
+Subtract 减
+Derivative 导数
+DDX 对x求导，一般输入position节点
+DDXY 对xy求导
+DDY 对y求导
+Interpolation 插值
+Inverse Lerp 逆线性插值
+Lerp 插值
+Smoothstep 类似step节点，但有两个edge输入
+Matrix 矩阵
+Matrix Construction 构造矩阵
+Matrix Determinant 行列式计算
+Matrix Split 矩阵分离
+Matrix Transpose 转置矩阵
+Range 范围
+Clamp 把输入值截取在一个区间（min<=x<=max）
+Fraction 输出小数部分
+Maximum 输出多个数中的最大值
+Minimum 输出多个数中的最小值
+One Minus 取相反数
+Random Range 生成一个在最大值、最小值之间的随机浮点数
+Remap 将输入等比例的从in区间映射到out区间
+Saturate 将输入截取到0-1之间
+Round 取整
+Ceiling 向上取整
+Floor 向下取整
+Round 四舍五入
+Sign 输入大于0输出1，输入小于0输出-1
+Step 设定边界值，输出小于边界值
+Truncate
+Trigonometry 三角函数
+Arccosine 反正弦
+Arcsine 反余弦
+Arctangent 反正切
+Cosine 余弦
+Degrees To Radians 角度转化为弧度
+Hyperbolic Cosine 双曲函数
+Hyperbolic Sine
+Hyperbolic Tangent
+Radians To Degrees 弧度转化为角度
+Sine 正弦
+Tangent 正切
+Vector 矢量
+Cross Product 叉积
+Distance 向量距离
+Dot Product 点积
+Fresnel Effect 菲涅尔效果
+Projection 获得向量A在向量B上的投影
+Reflection 通过入射光线获得反射向量
+Rejection
+Rotate About Axis 绕设定的轴旋转
+Sphere Mask 以半径为范围的球形遮罩
+Transform 物体、观察、切线、世界坐标等的空间转换
+Wave 波
+Noise Sine Wave 正弦波
+Sawtooth Wave 锯齿波
+Square Wave 方形波
+Triangle Wave 三角形波，先从0缓慢上升到1，然后立即下降到0（直角三角形）

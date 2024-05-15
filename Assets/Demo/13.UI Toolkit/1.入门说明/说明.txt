@@ -1,0 +1,6 @@
+目前UI Toolkit的问题
+1.不依赖Gameobject，难以制作世界中可互动的UI
+2.不支持shader，难以制作特效
+3.不支持animator组件，无法制作实时循环动画
+
+通过创建UI Document创建布局文件，双击该布局文件可以打开UI Builder编辑器

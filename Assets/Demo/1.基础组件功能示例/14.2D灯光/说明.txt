@@ -1,0 +1,9 @@
+1.需要在URP Global Settings创建Uninversal Render Pipleline Global Settings
+2.Graphics选择Scriptable Render Pipeline Settings
+
+3.创建的UniversalRenderPipelineAssetXXX文件勾选HDR
+4.创建的UniversalRenderPipelineAssetXXX_Renderer文件勾选Post-processing Enabled
+ 
+5.Camera中勾选Post Processing，HDR选择新建的配置文件
+
+注意：材质必须要是lit类型才能受到光照影响(默认的sprite-default是不受到新的灯光系统影响的)

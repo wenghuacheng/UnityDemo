@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e26e61ac79656e43beac9660d7aea84, type: 3}
+  m_Name: Building_Store
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8393835932227647707, guid: 907214b0837951b40955ba44b04767e0, type: 3}
+  ghostPrefab: {fileID: -578515989719352944, guid: 8ae2049a43327014194e11d5399687b7, type: 3}
+  description: Store
+  maxResGathering: 1
+  res: {fileID: 11400000, guid: fc22847b0e72e9444b6d8721bb26692a, type: 2}
+  resCount: 1
+  cost:
+  - res: {fileID: 11400000, guid: fc22847b0e72e9444b6d8721bb26692a, type: 2}
+    count: 1
+  - res: {fileID: 11400000, guid: e9c594c863ee4f949889c1ace274515c, type: 2}
+    count: 10

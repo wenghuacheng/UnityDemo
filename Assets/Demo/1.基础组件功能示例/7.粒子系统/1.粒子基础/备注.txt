@@ -1,0 +1,22 @@
+场景一
+1.修改Renderer中的material为sprite-default
+2.勾选texture sheet animation。设置mode为sprite。这样可以使用精灵显示粒子
+3.【可选】修改startcolor。可以下拉选择两种颜色渐变
+4。修改shape为edge。这样类似与下雪的效果
+5.【可选】修改start speed在2-5之间，start rotaion为0-360，start size为1-2
+6.修改rotation over lifetime，这样可以让粒子转动
+
+
+场景二
+1.勾选collsion，设置type为world，mode为2d。bounce为0
+2.【可选】勾选size over lifetime。可以控制粒子在生命周期中的尺寸变化
+
+场景三
+1.勾选trails。然后再renderer中选择trail material
+2.修改trails中的width over trail为0.1这样拖尾的线就细了
+3.修改ratio为0.5，这样只有一半的线有拖尾
+
+其他
+1.如果想要一次性的粒子则，取消循环，将持续时间改为0.1秒 开启emission，设置rate over time为50。添加一个bursts，让数量在30-100之间
+2.粒子方向不正确时通过旋转X来修改方向
+3.如果粒子不动可以检测X,Y,Z特别时Z时是否归零

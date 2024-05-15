@@ -1,0 +1,34 @@
+{
+    "name": "NewControls1",
+    "maps": [
+        {
+            "name": "PlayerNormal",
+            "id": "3e3059a1-6c08-41cc-bfda-73949bdcfebc",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "580b0ea4-1358-4b7f-9ec0-e0208bd1b7d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aafa702c-4131-4746-b6bd-22f5715bab33",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold(duration=3)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

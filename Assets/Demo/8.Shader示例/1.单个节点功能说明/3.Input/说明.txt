@@ -1,0 +1,68 @@
+--------Basic----------------
+Boolean 等价bool（true or false），可配合Branch节点使用
+Color 颜色
+Constant 常数（PI/TAU/PHI/E/SQRT2）
+Integer 等价int
+Slider 滑块
+Time 时间值，
+Float 等价float
+Vector 2
+Vector 3
+Vector 4
+
+Bitangent Vector 副切线向量
+Normal Vector 顶点法线向量
+Position 顶点位置
+Screen Position 屏幕上的顶点位置
+Tangent Vector 切线向量
+UV mesh中输入的UV
+Vertex Color 顶点颜色
+View Direction 视图方向（相机的方向）
+
+Blackbody
+Gradient 渐变贴图
+Sample Gradient 渐变采样与Gradient节点配合使用
+
+High Definition Render Pipeline 高清渲染管线
+Diffusion Profile
+Exposure
+HD Scene Color
+
+Matrix 矩阵
+Matrix 2x2
+Matrix 3x3
+Matrix 4x4
+Transformation Matrix 变换矩阵
+
+Mesh Deformation 网格变形
+Compute Deformation
+Linear Blend Skinning
+PBR 物理渲染
+Dielectric Specular 电解质镜面
+
+Metal Reflectance 金属度系数
+
+Scene 场景
+Ambient 环境光
+Camera 相机（输出包括位置、方向、透视视图、深度、宽度、高度、近面，远面）
+Fog 雾
+Object 物体
+Baked GI 全局光照
+Reflection Probe 反射探针
+Scene Color 在场景中设置的颜色
+Scene Depth 在场景中设置的深度
+Screen 可访问屏幕宽度与高度
+Texture 纹理
+Cubemap Asset 需连接Sample Cubemap
+Sample Cubemap 立方体贴图采样
+Sample Reflected Cubemap
+Sample Texture 2D 2D贴图采样
+Sample Texture 2D Array 等同于Sample Texture 2D，区别在于可输入一个index
+Sample Texture 2D LOD
+Sample Texture 3D 3D贴图采样
+Sample Virtual Texture
+Sampler State 采样状态，连接Sample Texture节点的sampler输入，可设置filter（linear，point，trilinear）wrap(repeat,clamp,mirror,mirror once)
+Texel Size 修改分辨率
+Texture 2D Array Asset
+Texture 2D Asset 需连接Sample Texture 2D
+Texture 3D Asset 需连接Sample Texture 3D
