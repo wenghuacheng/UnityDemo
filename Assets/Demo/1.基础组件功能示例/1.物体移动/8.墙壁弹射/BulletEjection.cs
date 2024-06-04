@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ObjectMove
 {
@@ -15,46 +10,30 @@ namespace ObjectMove
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private LayerMask collisonLayerMask;
 
-        private int maxEjectionCount = 5;//最大弹射次数
-        private int maxPenetrationCount = 3;//最大穿透次数
-        private int currentEjectionCount;
-        private int currentPenetrationCount;
-
-        private void Awake()
-        {
-            currentEjectionCount = maxEjectionCount;
-            currentPenetrationCount = maxPenetrationCount;
-        }
-
         private void Update()
         {
             this.transform.Translate(Vector3.up * Time.deltaTime * 10);
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            var contact = collision.GetContact(0);
+            var direction = Vector2.Reflect(this.transform.up, contact.normal).normalized;
+
+            //防止垂直撞击墙面后原路返回，随机产生偏移量
+            if (direction.x == 0)
+                direction.x = Random.Range(0, 1) >= 0.5 ? Random.Range(-0.1f, -1) : Random.Range(0.1f, 1);
+            else if (direction.y == 0)
+                direction.y = Random.Range(0, 1) >= 0.5 ? Random.Range(-0.1f, -1) : Random.Range(0.1f, 1);
+
+            direction = direction.normalized;
+            this.transform.up = direction;
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var isCollison = (collision.gameObject.layer & (1 << collisonLayerMask)) > 0;
-            var isEnemy = collision.gameObject.tag == "Enemy";
-            //Debug.Log("isCollison：" + isCollison + "-isEnemy:" + isEnemy);
-            if (isEnemy)
-            {
-                //穿透
-                currentPenetrationCount--;
-                if (currentPenetrationCount <= 0)
-                {
-                    Destroy(this.gameObject);
-                }
-            }
-            else if (isCollison)
-            {
-                ContactPoint2D[] contacts = new ContactPoint2D[1];
-                collision.GetContacts(contacts);
-
-                ContactPoint2D contact = contacts[0];
-                var direction = Vector2.Reflect(this.transform.up, contact.normal);
-                this.transform.up = direction;
-                Debug.Log("弹射:" + direction);
-            }
+            var isCollison = ((1 << collision.gameObject.layer) & collisonLayerMask) > 0;
+            Debug.Log(isCollison);
         }
     }
 }
