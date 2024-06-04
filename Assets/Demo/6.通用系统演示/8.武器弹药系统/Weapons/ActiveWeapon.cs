@@ -1,9 +1,7 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Demo.Common.Weapons
 {
@@ -119,6 +117,72 @@ namespace Demo.Common.Weapons
             }
 
 
+        }
+    }
+
+    public class WeaponReload : MonoBehaviour
+    {
+        private Coroutine coroutine;
+
+        //需要判断是否可以进行装填
+
+        public void StartReloading()
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+
+            coroutine = StartCoroutine("Reload");
+        }
+
+        private IEnumerator Reload(Weapon weapon, int reloadAmmoPercent)
+        {
+            weapon.isWeaponReloading = true;
+
+            while (weapon.weaponReloadTimer < weapon.weaponDetail.weaponReloadTime)
+            {
+                weapon.weaponReloadTimer += Time.deltaTime;
+                yield return null;
+            }
+
+            if (reloadAmmoPercent != 0)
+            {
+                //计算需要安装的弹药数量【reloadAmmoPercent=50表示装弹50%】
+                int ammoIncrease = Mathf.RoundToInt(weapon.weaponDetail.weaponAmmoCapacity * reloadAmmoPercent / 100f);
+
+                int totalAmmo = weapon.weaponRemainAmmo + ammoIncrease;
+
+                if (totalAmmo > weapon.weaponDetail.weaponAmmoCapacity)
+                {
+                    //不能大于弹夹数量
+                    weapon.weaponRemainAmmo = weapon.weaponDetail.weaponAmmoCapacity;
+                }
+                else
+                {
+                    weapon.weaponRemainAmmo = totalAmmo;
+                }
+            }
+
+
+            if (weapon.weaponDetail.hasInfiniteAmmo)
+            {
+                //无限弹药
+                weapon.weaponClipRemainingAmmo = weapon.weaponDetail.weaponClipAmmoCapacity;
+            }
+            else if (weapon.weaponRemainAmmo >= weapon.weaponDetail.weaponClipAmmoCapacity)
+            {
+                //剩余总弹药
+                weapon.weaponClipRemainingAmmo = weapon.weaponDetail.weaponClipAmmoCapacity;
+            }
+            else
+            {
+                //弹药不足，全部装入弹夹
+                weapon.weaponClipRemainingAmmo = weapon.weaponRemainAmmo;
+            }
+
+            weapon.weaponReloadTimer = 0;
+            weapon.isWeaponReloading = false;
+
+            //todo:触发事件，装弹完成
         }
     }
 }
