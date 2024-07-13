@@ -1,0 +1,1 @@
+修改texture中的grid分割两行两列（贴图就是两行两列），再设置frameovertime，0-4会在4张图中随机
