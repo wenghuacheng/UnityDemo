@@ -12,7 +12,10 @@ public class ParamTweeningDemo : MonoBehaviour
         _sequence.SetRelative();
         _sequence.SetAutoKill(false);
         _sequence.SetId("ID03");
-        _sequence.Pause();//创建完成后需要暂停，否则会立即执行        
+        _sequence.Pause();//创建完成后需要暂停，否则会立即执行
+
+        ////设置了SetAutoKill后需要手动销毁
+        //_sequence.Kill();
 
     }
 
@@ -38,6 +41,10 @@ public class ParamTweeningDemo : MonoBehaviour
         transform.DOMove(Vector3.one, 2f).SetEase(Ease.Linear, 10, 0);
         //设置循环次数。-1为无限次
         transform.DOMove(Vector3.one, 2f).SetLoops(3);
+
+        //当Link的对象销毁后销毁
+        transform.DOMove(Vector3.one, 2f)
+            .SetAutoKill(false).SetLink(gameObject);
     }
 
     /// <summary>

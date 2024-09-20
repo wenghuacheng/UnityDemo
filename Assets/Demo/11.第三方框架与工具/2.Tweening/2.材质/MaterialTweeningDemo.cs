@@ -17,6 +17,8 @@ public class MaterialTweeningDemo : MonoBehaviour
         //透明度
         Material fadeMaterial = DOFadeDemo.material;
         fadeMaterial.DOFade(0, 6f);
+
+        //todo:Material需要使用后销毁，虽然是赋值但实际是拷贝
     }
 
 }
