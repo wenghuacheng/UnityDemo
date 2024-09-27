@@ -12,7 +12,7 @@ namespace HB.Operation.State
 
         public override bool TransitionState()
         {
-            if (enemy.GetTarget() != null)
+            //if (enemy.GetTarget() != null)
             {
                 stateMachine.ChangeState(SkeletonStateMachine.SkeletonStateEnum.Battle);
             }

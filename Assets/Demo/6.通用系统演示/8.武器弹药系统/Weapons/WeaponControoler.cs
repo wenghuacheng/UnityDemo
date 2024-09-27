@@ -34,7 +34,7 @@ namespace Demo.Common.Weapons
         /// </summary>
         private void SetStartingWeapon()
         {
-            int currentWeaponIndex = 0;
+            //int currentWeaponIndex = 0;
 
             //todo：触发事件通知如UI刷新
         }

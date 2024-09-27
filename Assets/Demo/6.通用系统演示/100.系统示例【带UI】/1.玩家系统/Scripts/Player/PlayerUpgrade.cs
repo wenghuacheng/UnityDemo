@@ -11,7 +11,7 @@ namespace Demo.Common.PlayerSysWithUI
     /// </summary>
     public class PlayerUpgrade : MonoBehaviour
     {
-        public static event Action OnPlayerUpgradeEvent;
+        //public static event Action OnPlayerUpgradeEvent;
 
         [Header("Config")]
         [SerializeField] private PlayerStats stats;
