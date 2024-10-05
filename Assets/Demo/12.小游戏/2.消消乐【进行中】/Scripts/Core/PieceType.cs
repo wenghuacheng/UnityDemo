@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PieceType
+namespace Demo.Games.Pieces
 {
-    Normal, Count,Empty,Bubble
+    /// <summary>
+    /// µÿøÈ¿‡–Õ
+    /// </summary>
+    public enum PieceType
+    {
+        Normal, Count, Empty, Bubble
+    }
 }

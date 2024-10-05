@@ -177,7 +177,7 @@ MonoBehaviour:
   - type: 3
     prefab: {fileID: 549883313159882922, guid: 4ece6c3d3f1822149965051b34d7a322, type: 3}
   bgPrefab: {fileID: 846336119682972809, guid: 0467cf6310a68a84aa92ee32f3aa1dd0, type: 3}
-  fillTime: 1
+  fillTime: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

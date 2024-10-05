@@ -3,8 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public enum ColorType
+namespace Demo.Games.Pieces
 {
-    Red, Green, Blue, Yellow, Pink,Orange, Any, Count
+    /// <summary>
+    /// 元素颜色类型
+    /// </summary>
+    [Serializable]
+    public enum ColorType
+    {
+        Red, Green, Blue, Yellow, Pink, Orange, Any, Count
+    }
 }

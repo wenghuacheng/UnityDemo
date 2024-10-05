@@ -23,7 +23,7 @@ namespace Demo.Tools.UniTaskDemo
             var cts = new CancellationTokenSource();//创建令牌
 
             Debug.Log("Start ExecuteCancellationTokenSourceDemo");
-            SimpleUniTaskWithToken(cts.Token);
+            SimpleUniTaskWithToken(cts.Token).Forget();
 
             //等待2s后取消任务
             Thread.Sleep(2000);

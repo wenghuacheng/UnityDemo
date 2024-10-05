@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct PiecePrefab
+namespace Demo.Games.Pieces
 {
-    public PieceType type;
-    public GameObject prefab;
+    /// <summary>
+    /// µØ¿é¶ÔÏó
+    /// </summary>
+    [Serializable]
+    public struct PiecePrefab
+    {
+        public PieceType type;
+        public GameObject prefab;
+    }
 }

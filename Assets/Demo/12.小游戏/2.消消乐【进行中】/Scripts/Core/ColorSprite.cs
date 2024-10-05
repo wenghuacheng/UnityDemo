@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class ColorSprite
+namespace Demo.Games.Pieces
 {
-    public ColorType colorType;
-    public SpriteRenderer sprite;
+    /// <summary>
+    /// 颜色对应的精灵
+    /// </summary>
+    [Serializable]
+    public class ColorSprite
+    {
+        public ColorType colorType;
+        public SpriteRenderer sprite;
+    }
 }

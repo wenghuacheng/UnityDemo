@@ -6,7 +6,7 @@ namespace GroundDetection
 {
     public class GroundCheckCollider : MonoBehaviour
     {
-        [SerializeField] private bool isGround;
+        [field: SerializeField] public bool isGround { get; private set; }
 
         private void OnTriggerStay2D(Collider2D collision)
         {

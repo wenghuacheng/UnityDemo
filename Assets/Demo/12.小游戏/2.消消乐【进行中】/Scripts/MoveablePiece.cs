@@ -2,40 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveablePiece : MonoBehaviour
+namespace Demo.Games.Pieces
 {
-    private GamePiece piece;
-    private IEnumerator moveCoroutine;
-
-    private void Awake()
+    /// <summary>
+    /// 可移动地块
+    /// </summary>
+    public class MoveablePiece : MonoBehaviour
     {
-        piece = GetComponent<GamePiece>();
-    }
+        private GamePiece piece;
+        private IEnumerator moveCoroutine;
 
-    public void Move(int newX, int newY, float time)
-    {
-        if (moveCoroutine != null)
+        private void Awake()
         {
-            StopCoroutine(moveCoroutine);
+            piece = GetComponent<GamePiece>();
         }
 
-        moveCoroutine = MoveCoroutine(newX, newY, time);
-        StartCoroutine(moveCoroutine);     
-    }
-
-    private IEnumerator MoveCoroutine(int newX, int newY, float time)
-    {
-        piece.X = newX;
-        piece.Y = newY;
-
-        var startPos = transform.position;
-        var endPos = piece.GridRef.GetWorldPosition(newX, newY);
-
-        for (float t = 0; t <= time; t += Time.deltaTime)
+        public void Move(int newX, int newY, float time)
         {
-            piece.transform.position = Vector3.Lerp(startPos, endPos, t / time);
-            yield return 0;
+            if (moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
+
+            moveCoroutine = MoveCoroutine(newX, newY, time);
+            StartCoroutine(moveCoroutine);
         }
-        piece.transform.position = endPos;
+
+        /// <summary>
+        /// 地块移动
+        /// </summary>
+        private IEnumerator MoveCoroutine(int newX, int newY, float time)
+        {
+            piece.X = newX;
+            piece.Y = newY;
+
+            var startPos = transform.position;
+            var endPos = piece.GridRef.GetWorldPosition(newX, newY);
+
+            for (float t = 0; t <= time; t += Time.deltaTime)
+            {
+                piece.transform.position = Vector3.Lerp(startPos, endPos, t / time);
+                yield return 0;
+            }
+            piece.transform.position = endPos;
+        }
     }
 }
