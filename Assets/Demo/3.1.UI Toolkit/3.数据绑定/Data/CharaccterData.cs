@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Demo.UIToolkit
 {
-    [CreateAssetMenu(menuName ="UIToolKit",fileName = "测试SO/UIToolKit/人物数据_")]
+    [CreateAssetMenu(menuName = "UIToolKit/测试SO/", fileName = "人物数据_")]
     [Serializable]
     public class CharaccterData:ScriptableObject 
     {
