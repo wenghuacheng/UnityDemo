@@ -297,8 +297,8 @@ namespace Demo.Games.Pieces
                 piece1.MoveablePiece.Move(piece2X, piece2Y, fillTime);
                 piece2.MoveablePiece.Move(piece1X, piece1Y, fillTime);
 
-                ////清除相关地块
-                //ClearAllValidMatches();
+                //清除相关地块
+                ClearAllValidMatches();
             }
             else
             {
@@ -338,28 +338,24 @@ namespace Demo.Games.Pieces
         /// <returns></returns>
         public bool ClearAllValidMatches()
         {
-            bool needRefil = false;
+            bool needsRefill = false;
 
             for (int y = 0; y < yDim; y++)
             {
                 for (int x = 0; x < xDim; x++)
                 {
-                    if (pieces[x, y].IsClearable)
-                    {
-                        var match = GetMatch(pieces[x, y], x, y);
-                        if (match != null)
-                        {
-                            for (int i = 0; i < match.Count; i++)
-                            {
-                                if (ClearPiece(match[i].X, match[i].Y))
-                                    needRefil = true;
-                            }
-                        }                      
-                    }
+                    if (!pieces[x, y].IsClearable) continue;
+
+                    List<GamePiece> match = GetMatch(pieces[x, y], x, y);
+
+                    if (match == null) continue;
+
+
+                  
                 }
             }
 
-            return needRefil;
+            return needsRefill;
         }
 
         /// <summary>
