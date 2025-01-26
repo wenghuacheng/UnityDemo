@@ -1,0 +1,13 @@
+﻿title: Start
+position: -14,-82
+---
+Narrator: Hi, I'm the narrator for this beginner's guide!
+Narrator: I'm talking to you with Yarn Spinner!
+Narrator: What do you think of all this, then?
+    -> It's alright, I guess.
+        Narrator: Well, that's not very nice.
+        Narrator: I'm trying my best here.
+    -> It's great. I love it.
+        Narrator: Oh, you're too kind.
+        Narrator: I'm just doing my job.
+===
